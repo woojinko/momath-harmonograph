@@ -4,7 +4,6 @@ var t = 0.0, dt = 0.001;
 var a1x, a1y, p1x, p1y, f1, td1;
 var a2x, a2y, p2x, p2y, f2, td2;
 var a3x, a3y, p3x, p3y, f3, td3;
-var c1, c2, c3;
 var R = 400.0; 
 var Ax = 0.0, Ay = R, Bx = R, By = 0.0;
 var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
@@ -19,15 +18,20 @@ function init() {
 	gr.setTransform(2, 0, 0, -2, 490, 390);
 	gr.rotate(0.7854);
 	gr.clearRect(-490, -390, graph.width, graph.height);
-	gr.strokeStyle = "#F0F2BC";
+
+	var style = getComputedStyle(graph);
+	var penColor = style.getPropertyValue("--pen-color");
+	gr.strokeStyle = penColor;
 	gr.lineWidth = 0.4;
 	gr.globalAlpha = 0.8;
+
+
 	scene = document.getElementById('scene');
 	sc = scene.getContext('2d');
 	sc.setTransform(0.25, 0, 0, -0.25, 150, 180);
 	sc.rotate(0.7854);
 	sc.clearRect(-560, -560, scene.width*4, scene.height*4);
-	sc.fillStyle = "rgba(44,22,11,0.8)"
+	sc.fillStyle = "rgba(255, 255, 255, 0.7)";
 	sc.lineWidth = 4;
 	sc.globalAlpha = 0.8;
 	t = 0.0; ns = setns;
@@ -125,9 +129,7 @@ function read(id) {
 }
 
 function inputChange() {
-    c1 = document.getElementById('c1').value;
-    c2 = document.getElementById('c2').value;
-    c3 = document.getElementById('c3').value;
+	updateColor();
 	a1x = read('a1x');
 	a1y = read('a1y');
 	p1x = read('p1x') / 180.0 * Math.PI;
@@ -149,18 +151,18 @@ function inputChange() {
 }
 
 function updateColor() {
-	updateElementColor('c1', 'body', '--bdrop-color');
-	updateElementColor('c2', '.output.overview', '--dgram-color');
-	updateElementColor('c3', '.output.main', '--paper-color');
-	strokeColor = document.getElementById('c4').value;
+	updateElementColor('c1', 'body', '--b-color');
+	// updateElementColor('c2', '.output.overview', '--dgram-color');
+	updateElementColor('c3', '#graph', '--pen-color');
+	// strokeColor = document.getElementById('c4').value;
 }
 
 function updateElementColor(inputID, element, property) {
-	var elemInput = document.getElementById(inputID).value;
-	var elemName = document.querySelector(element);
-
-	input.addEventListener('change', function(){ 
-		elemName.style.setProperty(property, elemInput);
+	var elemInput = document.getElementById(inputID);
+	elemInput.addEventListener('change', function(){ 
+		var elemColor = elemInput.value;
+		var elemName = document.querySelector(element);
+		elemName.style.setProperty(property, elemColor);
 	})
 }
 

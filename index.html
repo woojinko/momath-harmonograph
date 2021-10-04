@@ -19,9 +19,8 @@
 </head>
 
 <body onload="init()">
-    <h1>MoMath Harmonograph</h1>
 <div id="frame">
-
+	<h1>MoMath Harmonograph</h1>
 	<div id="colors">
         <h2> Step 1: Choose colors</h2>
         <form>
@@ -30,18 +29,18 @@
                     <tr>
                         <td class="desc">Choose a backdrop color:</td>
 						<td class="var"><em>c1</em> =</td>
-                        <td class="input"><input type='color' id="c1" value=#FEC5BB onchange="inputChange()"/> </td>
+                        <td class="input"><input type='color' id="c1" value=#000000 onchange="inputChange()"/> </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td class="desc">Choose a paper color:</td>
 						<td class="var"><em>c2</em> =</td>
-                        <td class="input"><input type='color' id="c2" value="#000000" list="presets" onchange="inputChange()"/> 
+                        <td class="input"><input type='color' id="c2" value=#000000 list="presets" onchange="inputChange()"/> 
 							<datalist id="presets">
-								<option value="#000000">Black</option>
-								<option value="#ffffff">White</option>
+								<option value=#000000>Black</option>
+								<option value=#ffffff>White</option>
 							</datalist>
 						</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td class="desc">Choose a pen color:</td>
 						<td class="var"><em>c3</em> =</td>
@@ -107,7 +106,7 @@
 	</div>
 
     <div id="draw">
-        <h1> Step 3: Draw! </h1>
+        <h2> Step 3: Draw! </h1>
         <canvas id="graph" width="980" height="1080"> <h1> Step 3: Draw! </h1> </canvas>
         <div id="buttons">
             <button id="startButton" onclick="startStop();">stop</button>
