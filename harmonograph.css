@@ -12,19 +12,6 @@ body {
     font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
 }
 
-img {
-    max-width: 30%; 
-}
-/* 
-img[src="MoMath Harmonograph Logo.png"] {
-    max-width: 40%; 
-}
-
-img[src="2021 Gala Main Background Graphic.jpg"] {
-    max-width: 30%; 
-}  */
-
-
 a {
     color: #B99635; 
     text-decoration: none;
