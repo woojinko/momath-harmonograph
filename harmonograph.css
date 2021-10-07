@@ -9,7 +9,7 @@ body {
     color: var(--text-color);
     font-size: 100%;
     text-align: center; 
-    font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+    font-family: Helvetica, 'Lucida Grande', Verdana, Arial, Sans-Serif;
 }
 
 a {
@@ -34,7 +34,8 @@ h3 {
     /* margin: 1.8em 0 .8em 0; */
 }
 h2 {
-    font-size: 1.8em;
+    font-size: 2em;
+    text-decoration: underline;
     /* margin: 1.8em 0 .8em 0; */
 }
 
@@ -126,7 +127,7 @@ button {
 
 #buttons {
     position: absolute; 
-    top: 110px; 
+    top: 90px; 
     width: 480px; 
     text-align: left;
 }
