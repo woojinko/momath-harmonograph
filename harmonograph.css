@@ -11,38 +11,24 @@ body {
     text-align: center; 
     font-family: Helvetica, 'Lucida Grande', Verdana, Arial, Sans-Serif;
 }
-
-a {
-    color: #B99635; 
-    text-decoration: none;
+main {
+    position: relative; 
+    text-align: center; 
+    width: 980px; 
+    margin: auto;
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
 }
 
-a:visited {
-    color: #B99635;
-}
-
-a:hover {
-    color: #DA6314;
-}
-
-p {
-    margin: 0 0 .8em 0
+h2 {
+    font-size: 2em;
+    text-decoration: underline;
 }
 
 h3 {
     font-size: 1.2em;
-    /* margin: 1.8em 0 .8em 0; */
-}
-h2 {
-    font-size: 2em;
-    text-decoration: underline;
-    /* margin: 1.8em 0 .8em 0; */
-}
-
-h1 {
-    font-size: 3em;
-    text-align: center;
-    /* margin: 1.8em 0 .8em 0; */
 }
 
 table {
@@ -73,12 +59,13 @@ input.error {
 }
 
 button {
-    width: 5em; 
+    width: 6em; 
     text-align: center; 
     background: rgba(88,44,22,0.8); 
     color: #F0F2BC; 
     border-color: #F0F2BC; 
     border-width: 1px;
+    font-size: 24px;
 }
 
 .copy {
@@ -86,12 +73,7 @@ button {
     color: #5D432F;
 }
 
-#frame {
-    position: relative; 
-    text-align: center; 
-    width: 980px; 
-    margin: auto;
-}
+
 
 #colors {
     position: absolute; 
@@ -101,7 +83,7 @@ button {
     text-align: left;
 }
 
-#settings {
+#parameters {
     position: absolute; 
     top: 0px; 
     right: 0px; 
@@ -112,36 +94,36 @@ button {
 #draw {
     position: absolute; 
     top: 310px; 
-    left: 0px;
-    /* right: 100px; */
     text-align: left;
 }
 
-#graph {
-    position: relative; 
-    right: 200px;
-    top: 20px;
-    text-align: left;
+#harmonograph {
+    position: absolute; 
+    top: 300px;
     stroke: var(--pen-color);
 }
+
 
 #buttons {
     position: absolute; 
     top: 90px; 
     width: 480px; 
     text-align: left;
+    font-size: 24px;
 }
+
+
 
 #topview {
     position: absolute; 
-    top: 500px; 
-    left: 580px; 
+    top: 350px;
+    left: 300px;
     width: 300px;
 }
 
-#text {position:absolute; 
+/* #text {position:absolute; 
     top: 1020px; 
     left: 400px; 
     width: 460px; 
     text-align: left;
-}
+} */
