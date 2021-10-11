@@ -5,6 +5,7 @@
 }
 
 body {
+    /* background-image: url(); */
     background-color: var(--b-color); 
     color: var(--text-color);
     font-size: 100%;
@@ -17,6 +18,7 @@ main {
     width: 980px; 
     margin: auto;
 }
+
 h1 {
     font-size: 3em;
     text-align: center;
@@ -59,7 +61,7 @@ input.error {
 }
 
 button {
-    width: 6em; 
+    width: 8em; 
     text-align: center; 
     background: rgba(88,44,22,0.8); 
     color: #F0F2BC; 
@@ -71,6 +73,13 @@ button {
 .copy {
     font-size: .8em; 
     color: #5D432F;
+}
+
+#save {
+    position: absolute;
+    top: 400px;
+    right: 0px;
+	float: right;
 }
 
 #colors {

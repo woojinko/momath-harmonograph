@@ -26,14 +26,18 @@
 	</script>
 	<link rel="stylesheet" type="text/css" href="harmonograph.css" />
 	<script type="text/javascript" src="harmonograph.js"></script>
+	<script type="text/javascript" src="FileSaver.js"></script>
 </head>
 
 <body onload="init()">
-	<img src="MoMath Harmonograph Logo.png" alt="MoMath Harmonograph Logo" width="980" height="70">
+	<img src="MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="980" height="70">
 	<br>
 	<br>
-	<img src="2021 Gala Main Background Graphic.jpg" alt="2021 Gala Main Background Graphic" width="640" height="640">
+	<img src="2021GalaMainBackgroundGraphic.jpg" alt="2021 Gala Main Background Graphic" width="640" height="640">
+	<br>
 	<h1> Make your own!</h1>
+
+	<!-- <input type="file" id="input" multiple> -->
 
 
 	<main>
@@ -43,9 +47,14 @@
 				<table>
 					<table id="input" class="input">
 						<tr>
-							<td>Choose a paper color:</td>
+							<td>Choose a background color:</td>
 							<td><em>c1</em> =</td>
-							<td><input type='color' id="c1" value=#000000 onchange="inputChange()" />
+							<td class="input"><input type='color' id="c1" value=#000000 list="presets"
+									onchange="inputChange()" />
+								<datalist id="presets">
+									<option value=#000000>Black</option>
+									<option value=#ffffff>White</option>
+								</datalist>
 							</td>
 						</tr>
 						<tr>
@@ -71,16 +80,16 @@
 					</tr>
 					<tr>
 						<td class="label">&nbsp;Amplitude x</td>
-						<td><input id="a1x" value="100" onchange="inputChange()" /> </td>
-						<td><input id="a2x" value="100" onchange="inputChange()" /> </td>
-						<td><input id="a3x" value="100" onchange="inputChange()" /> </td>
+						<td><input id="A1x" value="100" onchange="inputChange()" /> </td>
+						<td><input id="A2x" value="100" onchange="inputChange()" /> </td>
+						<td><input id="A3x" value="100" onchange="inputChange()" /> </td>
 						<td>&nbsp;px</td>
 					</tr>
 					<tr>
 						<td class="label">Amplitude y</td>
-						<td><input id="a1y" value="100" onchange="inputChange()" /> </td>
-						<td><input id="a2y" value="100" onchange="inputChange()" /> </td>
-						<td><input id="a3y" value="-100" onchange="inputChange()" /> </td>
+						<td><input id="A1y" value="100" onchange="inputChange()" /> </td>
+						<td><input id="A2y" value="100" onchange="inputChange()" /> </td>
+						<td><input id="A3y" value="-100" onchange="inputChange()" /> </td>
 						<td>&nbsp;px</td>
 					</tr>
 					<tr>
@@ -132,6 +141,42 @@
 
 		<div id="topview">
 			<canvas id="modelDiagram" width="300" height="300"></canvas>
+		</div>
+
+		<div id="save">
+
+			<table class="input">
+				<tr>
+					<td class="desc">Output image size:</td>
+					<td class="input"><input type="number" id="res" min="0" value="640"/> pixels</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="event.preventDefault(); savePng();">Save PNG</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="event.preventDefault(); submitPng();">Submit PNG</button>
+					</td>
+				</tr>
+				<!-- <tr>
+					<td class="desc">Use Bézier curves</td>
+					<td class="input"><input type="checkbox" id="bezier" checked/></td>
+				</tr>
+				<tr>
+					<td class="desc">Use single cubic curve for</td>
+					<td class="input"><input type="number" id="bezier-step" min="1" value="32"/> segments</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onclick="event.preventDefault(); saveSvg();">Save SVG</button>
+					</td>
+				</tr> -->
+			</table>
+			<!-- <p>
+				<a id="permalink" href="#">Link to this creation</a>
+			</p> -->
 		</div>
 
 	</main>

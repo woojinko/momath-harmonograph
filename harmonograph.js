@@ -1,12 +1,16 @@
 var s = 1;                                         
 var x = 0.0,  y = 0.0;
 var t = 0.0, dt = 0.001;
-var a1x, a1y, p1x, p1y, f1, td1;
-var a2x, a2y, p2x, p2y, f2, td2;
-var a3x, a3y, p3x, p3y, f3, td3;
+
 var R = 400.0; 
 var Ax = 0.0, Ay = R, Bx = R, By = 0.0;
+
+var A1x, p1x, A1y, p1y, f1, td1;
+var A2x, p2x, A2y, p2y, f2, td2;
+var A3x, p3x, A3y, p3y, f3, td3;
+
 var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
+
 var harmonograph, hg, modelDiagram, md;
 var intId;
 var ns, setns = 100000;
@@ -20,6 +24,7 @@ var dScale = 0.25, dWidth = 180, dHeight = 180, dRotation = hRotation;
 
 // initialize webpage
 function init() {
+	console.log("hi");
 	harmonInit();
 	diagramInit();
 	t = 0.0; ns = setns;
@@ -51,7 +56,7 @@ function harmonInit() {
 
 // helper function to initialize diagram
 function diagramInit() {
-	modelDiagram = document.getElementById('modelDiagram')
+	modelDiagram = document.getElementById('modelDiagram');
 	// get 2D drawing context on the canvas
 	sc = modelDiagram.getContext('2d');
 
@@ -69,23 +74,26 @@ function diagramInit() {
 }
 
 // read and set current inputs
+// x(t) = A * sin(tf + p) * e^(-dt)
 function inputChange() {
 	updateColor();
-	a1x = read('a1x');
-	a1y = read('a1y');
+	A1x = read('A1x');
 	p1x = read('p1x') / 180.0 * Math.PI;
+	A1y = read('A1y');
 	p1y = read('p1y') / 180.0 * Math.PI;
-	f1 = read('f1');
 	td1 = read('td1');
-	a2x = read('a2x');
-	a2y = read('a2y');
+	f1 = read('f1');
+
+	A2x = read('A2x');
 	p2x = read('p2x') / 180.0 * Math.PI;
+	A2y = read('A2y');
 	p2y = read('p2y') / 180.0 * Math.PI;
 	f2 = read('f2');
 	td2 = read('td2');
-	a3x = read('a3x');
-	a3y = read('a3y');
+
+	A3x = read('A3x');
 	p3x = read('p3x') / 180.0 * Math.PI;
+	A3y = read('A3y');
 	p3y = read('p3y') / 180.0 * Math.PI;
 	f3 = read('f3');
 	td3 = read('td3');
@@ -96,15 +104,16 @@ function inputChange() {
 // i.e. x(t) = A * sin(tf + p) * e^(-dt)
 function swing() {
 	// setup each pendulum equation
-	var x1 = a1x * Math.sin(2.0 * Math.PI * f1 * t + p1x) * Math.exp(-t / td1);
-	var y1 = a1y * Math.sin(2.0 * Math.PI * f1 * t + p1y) * Math.exp(-t / td1);
-	var x2 = a2x * Math.sin(2.0 * Math.PI * f2 * t + p2x) * Math.exp(-t / td2);
-	var y2 = a2y * Math.sin(2.0 * Math.PI * f2 * t + p2y) * Math.exp(-t / td2);
-	var x3 = a3x * Math.sin(2.0 * Math.PI * f3 * t + p3x) * Math.exp(-t / td3);
-	var y3 = a3y * Math.sin(2.0 * Math.PI * f3 * t + p3y) * Math.exp(-t / td3);
+	var x1 = A1x * Math.sin(2.0 * Math.PI * f1 * t + p1x) * Math.exp(-t / td1);
+	var y1 = A1y * Math.sin(2.0 * Math.PI * f1 * t + p1y) * Math.exp(-t / td1);
+	var x2 = A2x * Math.sin(2.0 * Math.PI * f2 * t + p2x) * Math.exp(-t / td2);
+	var y2 = A2y * Math.sin(2.0 * Math.PI * f2 * t + p2y) * Math.exp(-t / td2);
+	var x3 = A3x * Math.sin(2.0 * Math.PI * f3 * t + p3x) * Math.exp(-t / td3);
+	var y3 = A3y * Math.sin(2.0 * Math.PI * f3 * t + p3y) * Math.exp(-t / td3);
 
 	var CD = Math.sqrt( Math.pow(R + x2 - x1, 2) + Math.pow(R + y1 - y2, 2) );
 	var gamma = Math.acos( CD / (2 * R) ) - Math.acos( (R + y1 - y2) / CD );
+
 	Px = x1 - ( R * Math.sin(gamma) );
 	Py = R + y1 - ( R * Math.cos(gamma) );
 	x = Px - x3;  y = Py -y3;
@@ -198,4 +207,46 @@ function updateElementColor(inputID, element, property) {
 		elemName.style.setProperty(property, elemColor);
 	})
 }
+
+function savePng() {
+	var res = read('res');
+	// var png = document.createElement('canvas');
+	// png.width = res;
+	// png.height = res;
+	// var renderer = new CanvasRenderer(png, false);
+	// renderer.draw(xs, ys);
+	// renderer.save();
+	save(harmonograph);
+}
+
+function submitPng() {
+	var res = read('res');
+	save(harmonograph);
+}
+
+// try to implement later if I have time!
+/*
+function saveSvg() {
+	var res = read('res');
+	var ns = 'http://www.w3.org/2000/svg';
+	var svg = document.createElementNS(ns, 'svg');
+	svg.setAttribute('xmlns', ns);
+	svg.setAttribute('width', res);
+	svg.setAttribute('height', res);
+	svg.setAttribute('version', '1.1');
+	var bezier = document.getElementById('bezier').checked;
+	var renderer = new SvgRenderer(svg, !bezier, bezier, read('bezier-step'));
+	renderer.draw(xs, ys);
+	renderer.save();
+	// save(harmonograph);
+}
+*/
+
+function save(hCanvas) {
+	console.log("hi");
+	hCanvas.toBlob(function(blob) {
+		saveAs(blob, 'harmonograph.png');
+	}, 'image/png');
+}
+
 
