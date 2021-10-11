@@ -35,143 +35,142 @@
 	<h1> Make your own!</h1>
 
 	<main>
-		<div id="colors">
-			<h2> Step 1: Colors</h2>
-			<form>
-				<table>
-					<table id="input" class="input">
-						<tr>
-							<td>Choose a background color:</td>
-							<td><em>c1</em> =</td>
-							<td class="input"><input type='color' id="c1" value=#000000 list="presets"
-									onchange="inputChange()" />
-								<datalist id="presets">
-									<option value=#000000>Black</option>
-									<option value=#ffffff> White</option>
-								</datalist>
-							</td>
+		<div id="personalize">
+			<div id="colors">
+				<h2> Step 1: Colors</h2>
+				<form>
+					<table>
+						<table id="input" class="input">
+							<tr>
+								<td>Choose a background color:</td>
+								<td><em>c1</em> =</td>
+								<td class="input"><input type='color' id="c1" value=#000000 list="presets"
+										onchange="inputChange()" />
+									<datalist id="presets">
+										<option value=#000000>Black</option>
+										<option value=#ffffff> White</option>
+									</datalist>
+								</td>
+							</tr>
+							<tr>
+								<td>Choose a pen color:</td>
+								<td><em>c2</em> =</td>
+								<td><input type='color' id="c2" value=#A1BAAB onchange="inputChange()" />
+								</td>
+							</tr>
+							<tr>
+								<td>Choose multiple pen colors:</td>
+								<td><em>c3</em> =</td>
+								<td>
+									<!-- <input type='color' id="c3" value=#A1BAAB onchange="inputChange()" /> -->
+									<input type='color' id="c3" value=#A1BAAB onchange="inputChange()" />
+
+								</td>
+							</tr>
+						</table>
+						</td>
+				</form>
+			</div>
+
+			<div id="parameters">
+				<h2> Step 2: Parameters</h2>
+				<form>
+					<table>
+						<tr class="head">
+							<td> </td>
+							<td>Pend A</td>
+							<td>Pend B</td>
+							<td>Pend C</td>
 						</tr>
 						<tr>
-							<td>Choose a pen color:</td>
-							<td><em>c3</em> =</td>
-							<td><input type='color' id="c3" value=#A1BAAB onchange="inputChange()" />
-							</td>
+							<td class="label">&nbsp;Amplitude x</td>
+							<td><input id="A1x" value="100" onchange="inputChange()" /> </td>
+							<td><input id="A2x" value="100" onchange="inputChange()" /> </td>
+							<td><input id="A3x" value="100" onchange="inputChange()" /> </td>
+							<td>&nbsp;px</td>
+						</tr>
+						<tr>
+							<td class="label">Amplitude y</td>
+							<td><input id="A1y" value="100" onchange="inputChange()" /> </td>
+							<td><input id="A2y" value="100" onchange="inputChange()" /> </td>
+							<td><input id="A3y" value="-100" onchange="inputChange()" /> </td>
+							<td>&nbsp;px</td>
+						</tr>
+						<tr>
+							<td class="label">Phase x</td>
+							<td><input id="p1x" value="0" onchange="inputChange()" /> </td>
+							<td><input id="p2x" value="90" onchange="inputChange()" /> </td>
+							<td><input id="p3x" value="0" onchange="inputChange()" /> </td>
+							<td>&nbsp;&deg;</td>
+						</tr>
+						<tr>
+							<td class="label">Phase y</td>
+							<td><input id="p1y" value="90" onchange="inputChange()" /> </td>
+							<td><input id="p2y" value="0" onchange="inputChange()" /> </td>
+							<td><input id="p3y" value="0" onchange="inputChange()" /> </td>
+							<td>&nbsp;&deg;</td>
+						</tr>
+						<tr>
+							<td class="label">Damping</td>
+							<td><input id="td1" value="180" onchange="inputChange()" /> </td>
+							<td><input id="td2" value="180" onchange="inputChange()" /> </td>
+							<td><input id="td3" value="80" onchange="inputChange()" /> </td>
+							<td>&nbsp;s</td>
+						</tr>
+						<tr>
+							<td class="label">Frequency</td>
+							<td><input id="f1" value="1" onchange="inputChange()" /> </td>
+							<td><input id="f2" value="0.98" onchange="inputChange()" /> </td>
+							<td><input id="f3" value="1" onchange="inputChange()" /> </td>
+							<td>&nbsp;Hz&nbsp;</td>
 						</tr>
 					</table>
-					</td>
-			</form>
-		</div>
+				</form>
+			</div>
 
-		<div id="parameters">
-			<h2> Step 2: Parameters</h2>
-			<form>
-				<table>
-					<tr class="head">
-						<td> </td>
-						<td>Pend A</td>
-						<td>Pend B</td>
-						<td>Pend C</td>
+			<div id="draw">
+				<h2> Step 3: Draw! </h1>
+					<canvas id="harmonograph" width="1080" height="880">
+						<h1> Step 3: Draw! </h1>
+					</canvas>
+					<div id="buttons">
+						<button id="startButton" onclick="startStop();">stop</button> <br>
+						<button onclick="init();">reset</button> <br>
+						<!-- <button onclick="showSettings();">settings</button> <br> -->
+						<!-- <button onclick="showModelDiagram();">diagram</button> <br> -->
+						<button onclick="speed();">speed</button><span id="spf">&nbsp; 1x</span>
+					</div>
+
+			</div>
+
+			<div id="topview">
+				<canvas id="modelDiagram" width="300" height="300"></canvas>
+			</div>
+
+			<div id="save">
+
+				<table class="input">
+					<tr>
+						<td class="desc">Output image size:</td>
+						<td class="input"><input type="number" id="res" min="0" value="640" /> pixels</td>
 					</tr>
 					<tr>
-						<td class="label">&nbsp;Amplitude x</td>
-						<td><input id="A1x" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A2x" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A3x" value="100" onchange="inputChange()" /> </td>
-						<td>&nbsp;px</td>
+						<td colspan="2">
+							<button type="button" onclick="event.preventDefault(); savePng();">Save PNG</button>
+						</td>
 					</tr>
 					<tr>
-						<td class="label">Amplitude y</td>
-						<td><input id="A1y" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A2y" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A3y" value="-100" onchange="inputChange()" /> </td>
-						<td>&nbsp;px</td>
-					</tr>
-					<tr>
-						<td class="label">Phase x</td>
-						<td><input id="p1x" value="0" onchange="inputChange()" /> </td>
-						<td><input id="p2x" value="90" onchange="inputChange()" /> </td>
-						<td><input id="p3x" value="0" onchange="inputChange()" /> </td>
-						<td>&nbsp;&deg;</td>
-					</tr>
-					<tr>
-						<td class="label">Phase y</td>
-						<td><input id="p1y" value="90" onchange="inputChange()" /> </td>
-						<td><input id="p2y" value="0" onchange="inputChange()" /> </td>
-						<td><input id="p3y" value="0" onchange="inputChange()" /> </td>
-						<td>&nbsp;&deg;</td>
-					</tr>
-					<tr>
-						<td class="label">Damping</td>
-						<td><input id="td1" value="180" onchange="inputChange()" /> </td>
-						<td><input id="td2" value="180" onchange="inputChange()" /> </td>
-						<td><input id="td3" value="80" onchange="inputChange()" /> </td>
-						<td>&nbsp;s</td>
-					</tr>
-					<tr>
-						<td class="label">Frequency</td>
-						<td><input id="f1" value="1" onchange="inputChange()" /> </td>
-						<td><input id="f2" value="0.98" onchange="inputChange()" /> </td>
-						<td><input id="f3" value="1" onchange="inputChange()" /> </td>
-						<td>&nbsp;Hz&nbsp;</td>
+						<td colspan="2">
+							<button type="button" onclick="event.preventDefault(); submitPng();">Submit PNG</button>
+						</td>
 					</tr>
 				</table>
-			</form>
+				<!-- <p>
+					<a id="permalink" href="#">Link to this creation</a>
+				</p> -->
+			</div>
 		</div>
 
-		<div id="draw">
-			<h2> Step 3: Draw! </h1>
-				<canvas id="harmonograph" width="1080" height="1080">
-					<h1> Step 3: Draw! </h1>
-				</canvas>
-				<div id="buttons">
-					<button id="startButton" onclick="startStop();">stop</button> <br>
-					<button onclick="init();">reset</button> <br>
-					<!-- <button onclick="showSettings();">settings</button> <br> -->
-					<!-- <button onclick="showModelDiagram();">diagram</button> <br> -->
-					<button onclick="speed();">speed</button><span id="spf">&nbsp; 1x</span>
-				</div>
-
-		</div>
-
-		<div id="topview">
-			<canvas id="modelDiagram" width="300" height="300"></canvas>
-		</div>
-
-		<div id="save">
-
-			<table class="input">
-				<tr>
-					<td class="desc">Output image size:</td>
-					<td class="input"><input type="number" id="res" min="0" value="640"/> pixels</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="event.preventDefault(); savePng();">Save PNG</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="event.preventDefault(); submitPng();">Submit PNG</button>
-					</td>
-				</tr>
-				<!-- <tr>
-					<td class="desc">Use Bézier curves</td>
-					<td class="input"><input type="checkbox" id="bezier" checked/></td>
-				</tr>
-				<tr>
-					<td class="desc">Use single cubic curve for</td>
-					<td class="input"><input type="number" id="bezier-step" min="1" value="32"/> segments</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="button" onclick="event.preventDefault(); saveSvg();">Save SVG</button>
-					</td>
-				</tr> -->
-			</table>
-			<!-- <p>
-				<a id="permalink" href="#">Link to this creation</a>
-			</p> -->
-		</div>
 
 	</main>
 </body>

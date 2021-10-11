@@ -13,6 +13,7 @@ var A3x, p3x, A3y, p3y, f3, td3;
 var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
 
 var harmonograph, hg, modelDiagram, md;
+var style, penColor;
 var intId = window.setInterval(step, 1000 * dt);;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
@@ -46,8 +47,9 @@ function harmonInit() {
 	hg.clearRect(-0.5 * hWidth, -0.5 * hHeight, hWidth, hHeight);
 
 	// set up aesthetics
-	var style = getComputedStyle(harmonograph);
-	var penColor = style.getPropertyValue("--pen-color");
+	style = getComputedStyle(harmonograph);
+	penColor = style.getPropertyValue("--pen-color");
+
 	hg.strokeStyle = penColor;
 	hg.lineWidth = 0.5;
 	hg.globalAlpha = 0.75;
@@ -129,11 +131,16 @@ function step() {
 		for (var i = 0; i < s; ++i) {
 			t += dt;
 			swing();
+			style = getComputedStyle(harmonograph);
+			penColor = style.getPropertyValue("--pen-color");
+			console.log(penColor);
+			hg.strokeStyle = penColor;
 			hg.lineTo(x, y);
 		}
 		hg.stroke();
 		sc.clearRect(-680, -680, 1600, 1600);
-		sc.strokeStyle = "#999966";
+
+		sc.strokeStyle = "#000000";
 		sc.strokeRect(Ax - 80, By - 80, Bx - Ax + 160, Ay - By + 160);
 		sc.beginPath(); sc.arc(Ax, Ay, 10, 0, 6.2832); sc.stroke();
 		sc.beginPath(); sc.arc(Bx, By, 10, 0, 6.2832); sc.stroke();
@@ -143,7 +150,8 @@ function step() {
 		sc.moveTo(Ax, By);
 		sc.lineTo(Ex, Ey);
 		sc.stroke();
-		sc.strokeStyle = "#F0F2BC";
+
+		sc.strokeStyle = "#000000";
 		sc.beginPath();
 		sc.moveTo(Ax, Ay);
 		sc.lineTo(Cx, Cy);
@@ -201,7 +209,7 @@ function read(id) {
 
 function updateColor() {
 	updateElementColor('c1', 'body', '--b-color');
-	updateElementColor('c3', '#harmonograph', '--pen-color');
+	updateElementColor('c2', '#harmonograph', '--pen-color');
 }
 
 function updateElementColor(inputID, element, property) {
