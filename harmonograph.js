@@ -1,8 +1,9 @@
-var s = 1;                                         
-var x = 0.0,  y = 0.0;
-var t = 0.0, dt = 0.001;
+var s = 1;
+var x = 0.0, y = 0.0;
+var t = 0.0;
+var dt = 0.001;
 
-var R = 400.0; 
+var R = 400.0;
 var Ax = 0.0, Ay = R, Bx = R, By = 0.0;
 
 var A1x, p1x, A1y, p1y, f1, td1;
@@ -12,7 +13,7 @@ var A3x, p3x, A3y, p3y, f3, td3;
 var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
 
 var harmonograph, hg, modelDiagram, md;
-var intId;
+var intId = window.setInterval(step, 1000 * dt);;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
@@ -24,13 +25,11 @@ var dScale = 0.25, dWidth = 180, dHeight = 180, dRotation = hRotation;
 
 // initialize webpage
 function init() {
-	console.log("hi");
 	harmonInit();
 	diagramInit();
 	t = 0.0; ns = setns;
 	inputChange();
 	swing();
-	intId = window.setInterval(step, 1000 * dt);
 }
 
 // helper function to initialize harmonograph
@@ -65,7 +64,7 @@ function diagramInit() {
 	sc.rotate(dRotation);
 
 	// erase existing pixels in drawing area by setting them to transparent black
-	sc.clearRect(-560, -560, modelDiagram.width*4, modelDiagram.height*4);
+	sc.clearRect(-560, -560, modelDiagram.width * 4, modelDiagram.height * 4);
 
 	// set up aesthetics
 	sc.fillStyle = "rgba(255, 255, 255, 0.7)";
@@ -111,56 +110,62 @@ function swing() {
 	var x3 = A3x * Math.sin(2.0 * Math.PI * f3 * t + p3x) * Math.exp(-t / td3);
 	var y3 = A3y * Math.sin(2.0 * Math.PI * f3 * t + p3y) * Math.exp(-t / td3);
 
-	var CD = Math.sqrt( Math.pow(R + x2 - x1, 2) + Math.pow(R + y1 - y2, 2) );
-	var gamma = Math.acos( CD / (2 * R) ) - Math.acos( (R + y1 - y2) / CD );
+	var CD = Math.sqrt(Math.pow(R + x2 - x1, 2) + Math.pow(R + y1 - y2, 2));
+	var gamma = Math.acos(CD / (2 * R)) - Math.acos((R + y1 - y2) / CD);
 
-	Px = x1 - ( R * Math.sin(gamma) );
-	Py = R + y1 - ( R * Math.cos(gamma) );
-	x = Px - x3;  y = Py -y3;
-	Cx = x1;  Cy = R + y1;  
-	Dx = R + x2;  Dy = y2;
+	Px = x1 - (R * Math.sin(gamma));
+	Py = R + y1 - (R * Math.cos(gamma));
+	x = Px - x3; y = Py - y3;
+	Cx = x1; Cy = R + y1;
+	Dx = R + x2; Dy = y2;
 	Ex = x3; Ey = y3;
 }
 
 function step() {
-	hg.beginPath();
-	hg.moveTo(x, y);
-	for (var i = 0; i < s; ++i) {
-		t += dt;
-		swing();
-		hg.lineTo(x, y);
+	if (hg != null) {
+
+		hg.beginPath();
+		hg.moveTo(x, y);
+		for (var i = 0; i < s; ++i) {
+			t += dt;
+			swing();
+			hg.lineTo(x, y);
+		}
+		hg.stroke();
+		sc.clearRect(-680, -680, 1600, 1600);
+		sc.strokeStyle = "#999966";
+		sc.strokeRect(Ax - 80, By - 80, Bx - Ax + 160, Ay - By + 160);
+		sc.beginPath(); sc.arc(Ax, Ay, 10, 0, 6.2832); sc.stroke();
+		sc.beginPath(); sc.arc(Bx, By, 10, 0, 6.2832); sc.stroke();
+		sc.beginPath(); sc.arc(Ax, By, 10, 0, 6.2832); sc.stroke();
+		sc.beginPath(); sc.arc(Ex, Ey, 200, 0, 6.2832); sc.fill(); sc.stroke();
+		sc.beginPath();
+		sc.moveTo(Ax, By);
+		sc.lineTo(Ex, Ey);
+		sc.stroke();
+		sc.strokeStyle = "#F0F2BC";
+		sc.beginPath();
+		sc.moveTo(Ax, Ay);
+		sc.lineTo(Cx, Cy);
+		sc.lineTo(Px, Py);
+		sc.lineTo(Dx, Dy);
+		sc.lineTo(Bx, By);
+		sc.stroke();
+		ns -= 1;
+		if (ns <= 0) { window.clearInterval(intId); }
 	}
-	hg.stroke();
-	sc.clearRect(-680, -680, 1600, 1600);
-	sc.strokeStyle = "#999966";
-	sc.strokeRect(Ax-80,By-80,Bx-Ax+160,Ay-By+160);
-	sc.beginPath(); sc.arc(Ax,Ay,10,0,6.2832); sc.stroke();
-    sc.beginPath(); sc.arc(Bx,By,10,0,6.2832); sc.stroke();
-    sc.beginPath(); sc.arc(Ax,By,10,0,6.2832); sc.stroke();
-	sc.beginPath(); sc.arc(Ex,Ey,200,0,6.2832); sc.fill(); sc.stroke();
-	sc.beginPath(); 
-	sc.moveTo(Ax, By);
-	sc.lineTo(Ex, Ey);
-	sc.stroke();
-	sc.strokeStyle = "#F0F2BC";
-	sc.beginPath();
-	sc.moveTo(Ax, Ay);
-	sc.lineTo(Cx, Cy);
-	sc.lineTo(Px, Py);
-	sc.lineTo(Dx, Dy);
-	sc.lineTo(Bx, By);
-	sc.stroke();
-	ns -= 1;
-	if (ns <= 0) { window.clearInterval(intId); }
+
 }
 
 function startStop() {
 	var stab = document.getElementById('startButton');
 	if (intId == null) {
+		console.log("trying to start");
 		intId = window.setInterval(step, 1000 * dt);
 		stab.innerHTML = 'stop';
 	}
-    else {
+	else {
+		console.log("trying to stop");
 		window.clearInterval(intId);
 		intId = null;
 		stab.innerHTML = 'start';
@@ -168,18 +173,18 @@ function startStop() {
 }
 
 function speed() {
-	s = s*2;
+	s = s * 2;
 	if (s > 128) { s = 1; };
 	document.getElementById('spf').innerHTML = "&nbsp; " + s + "x"
- }
+}
 
 function showSettings() {
-	if (vis1) { document.getElementById('settings').style.visibility = "hidden"; vis1 = false;}
-	else { document.getElementById('settings').style.visibility = "visible"; vis1 = true;}
+	if (vis1) { document.getElementById('settings').style.visibility = "hidden"; vis1 = false; }
+	else { document.getElementById('settings').style.visibility = "visible"; vis1 = true; }
 }
 function showModelDiagram() {
-	if (vis2) { document.getElementById('topview').style.visibility = "hidden"; vis2 = false;}
-	else { document.getElementById('topview').style.visibility = "visible"; vis2 = true;}
+	if (vis2) { document.getElementById('topview').style.visibility = "hidden"; vis2 = false; }
+	else { document.getElementById('topview').style.visibility = "visible"; vis2 = true; }
 }
 
 function read(id) {
@@ -201,8 +206,15 @@ function updateColor() {
 
 function updateElementColor(inputID, element, property) {
 	var elemInput = document.getElementById(inputID);
-	elemInput.addEventListener('change', function(){ 
+	elemInput.addEventListener('change', function () {
 		var elemColor = elemInput.value;
+		if (inputID == 'c1') {
+			if (elemColor == '#000000') {
+				elemColor = 'rgba(0, 0, 0, 0.8)';
+			} else {
+				elemColor = 'rgba(255, 255, 255, 0.8)';
+			}
+		}
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
 	})
@@ -244,7 +256,7 @@ function saveSvg() {
 
 function save(hCanvas) {
 	console.log("hi");
-	hCanvas.toBlob(function(blob) {
+	hCanvas.toBlob(function (blob) {
 		saveAs(blob, 'harmonograph.png');
 	}, 'image/png');
 }
