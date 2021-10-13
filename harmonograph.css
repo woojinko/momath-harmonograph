@@ -2,7 +2,12 @@
     --b-color: #000000;
     /* --b-color: rgba(48, 48, 48, 0.8); */
     --text-color: #f59e8e;
-    --pen-color: #91fcbc;
+    --current-pen-color: #91fcbc;
+    --pen-color-3: #91fcbc;
+    --pen-color-4: #91fcbc;
+    --pen-color-5: #91fcbc;
+
+
 }
 
 body {
@@ -117,17 +122,12 @@ button {
     position: absolute; 
     top: -500px;
     right: 0px;
-    /* bottom: -100px; */
-    /* right: -50px; */
-    /* right: 0px; */
-    /* bottom: 0px; */
-    stroke: var(--pen-color);
+    stroke: var(--current-pen-color);
 }
 
 #topview {
     position: relative;
     left: 100px;
-    /* right: -200px;  */
     top: -150px;
     width: 300px;
 }

@@ -125,15 +125,19 @@ function swing() {
 
 function step() {
 	if (hg != null) {
-
 		hg.beginPath();
 		hg.moveTo(x, y);
 		for (var i = 0; i < s; ++i) {
 			t += dt;
 			swing();
 			style = getComputedStyle(harmonograph);
-			penColor = style.getPropertyValue("--pen-color");
-			console.log(penColor);
+			if (t % 3 < 1) {
+				penColor = style.getPropertyValue("--pen-color-3");
+			} else if (t % 3 < 2) {
+				penColor = style.getPropertyValue("--pen-color-4");
+			} else {
+				penColor = style.getPropertyValue("--pen-color-5");
+			}
 			hg.strokeStyle = penColor;
 			hg.lineTo(x, y);
 		}
@@ -207,20 +211,17 @@ function read(id) {
 
 function updateColor() {
 	updateElementColor('c1', 'body', '--b-color');
-	updateElementColor('c2', '#harmonograph', '--pen-color');
+	// updateElementColor('c2', '#harmonograph', '--current-pen-color');
+	updateElementColor('c3', '#harmonograph', '--pen-color-3');
+	updateElementColor('c4', '#harmonograph', '--pen-color-4');
+	updateElementColor('c5', '#harmonograph', '--pen-color-5');
+
 }
 
 function updateElementColor(inputID, element, property) {
 	var elemInput = document.getElementById(inputID);
 	elemInput.addEventListener('change', function () {
 		var elemColor = elemInput.value;
-		// if (inputID == 'c1') {
-		// 	if (elemColor == '#000000') {
-		// 		elemColor = 'rgba(0, 0, 0, 0.8)';
-		// 	} else {
-		// 		elemColor = 'rgba(255, 255, 255, 0.8)';
-		// 	}
-		// }
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
 	})
