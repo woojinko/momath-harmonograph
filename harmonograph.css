@@ -2,7 +2,7 @@
     --b-color: #000000;
     /* --b-color: rgba(48, 48, 48, 0.8); */
     --text-color: #f59e8e;
-    --current-pen-color: #91fcbc;
+    /* --current-pen-color: #91fcbc; */
     --pen-color-3: #91fcbc;
     --pen-color-4: #91fcbc;
     --pen-color-5: #91fcbc;
@@ -43,7 +43,7 @@ h3 {
 }
 
 table {
-    background-color: rgba(44,22,11,0.6);
+    /* background-color: rgba(132, 96, 7, 0.6); */
 }
 
 tr.head {
@@ -60,19 +60,19 @@ input {
     width: 4em; 
     text-align: center; 
     background: none; 
-    color:#F0F2BC; 
+    color:#cf89f7; 
     border-color: #F0F2BC; 
     border-width: 1px;
 }
 
 input.error {
-    background-color: #671008;
+    background-color: #fb1905;
 }
 
 button {
     width: 4em; 
     text-align: center; 
-    background: rgba(88,44,22,0.8); 
+    background: #721e1e; 
     color: #F0F2BC; 
     border-color: #F0F2BC; 
     border-width: 1px;
@@ -122,7 +122,9 @@ button {
     position: absolute; 
     top: -500px;
     right: 0px;
-    stroke: var(--current-pen-color);
+    /* stroke: var(--current-pen-color); */
+    stroke: var(--pen-color-3);
+
 }
 
 #topview {
@@ -131,6 +133,13 @@ button {
     top: -150px;
     width: 300px;
 }
+/* 
+#dropboxButton {
+    position: relative;
+    left: 100px;
+    top: -150px;
+    width: 300px;
+} */
 
 /* #text {position:absolute; 
     top: 1020px; 
