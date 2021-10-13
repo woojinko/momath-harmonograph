@@ -140,7 +140,7 @@ function step() {
 		hg.stroke();
 		sc.clearRect(-680, -680, 1600, 1600);
 
-		sc.strokeStyle = "#000000";
+		sc.strokeStyle = "#f59e8e";
 		sc.strokeRect(Ax - 80, By - 80, Bx - Ax + 160, Ay - By + 160);
 		sc.beginPath(); sc.arc(Ax, Ay, 10, 0, 6.2832); sc.stroke();
 		sc.beginPath(); sc.arc(Bx, By, 10, 0, 6.2832); sc.stroke();
@@ -151,7 +151,7 @@ function step() {
 		sc.lineTo(Ex, Ey);
 		sc.stroke();
 
-		sc.strokeStyle = "#000000";
+		sc.strokeStyle = "#f59e8e";
 		sc.beginPath();
 		sc.moveTo(Ax, Ay);
 		sc.lineTo(Cx, Cy);
@@ -168,12 +168,10 @@ function step() {
 function startStop() {
 	var stab = document.getElementById('startButton');
 	if (intId == null) {
-		console.log("trying to start");
 		intId = window.setInterval(step, 1000 * dt);
 		stab.innerHTML = 'stop';
 	}
 	else {
-		console.log("trying to stop");
 		window.clearInterval(intId);
 		intId = null;
 		stab.innerHTML = 'start';
@@ -216,13 +214,13 @@ function updateElementColor(inputID, element, property) {
 	var elemInput = document.getElementById(inputID);
 	elemInput.addEventListener('change', function () {
 		var elemColor = elemInput.value;
-		if (inputID == 'c1') {
-			if (elemColor == '#000000') {
-				elemColor = 'rgba(0, 0, 0, 0.8)';
-			} else {
-				elemColor = 'rgba(255, 255, 255, 0.8)';
-			}
-		}
+		// if (inputID == 'c1') {
+		// 	if (elemColor == '#000000') {
+		// 		elemColor = 'rgba(0, 0, 0, 0.8)';
+		// 	} else {
+		// 		elemColor = 'rgba(255, 255, 255, 0.8)';
+		// 	}
+		// }
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
 	})
@@ -263,7 +261,6 @@ function saveSvg() {
 */
 
 function save(hCanvas) {
-	console.log("hi");
 	hCanvas.toBlob(function (blob) {
 		saveAs(blob, 'harmonograph.png');
 	}, 'image/png');
