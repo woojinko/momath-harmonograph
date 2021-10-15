@@ -19,7 +19,7 @@ var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
 
-var hScale = 2, hWidth = 500, hHeight = 500, hRotation = 0.7854;
+var hScale = 1.5, hX = 500, hY = 500, hRotation = 0.7854;
 var dScale = 0.25, dWidth = 180, dHeight = 180, dRotation = hRotation;
 
 
@@ -40,11 +40,14 @@ function harmonInit() {
 	hg = harmonograph.getContext('2d');
 
 	// set transformations
-	hg.setTransform(hScale, 0, 0, -1 * hScale, hWidth, hHeight);
-	hg.rotate(hRotation);
+	hg.setTransform(hScale, 0, 0, -1 * hScale, hX, hY);
 
 	// erase existing pixels in drawing area by setting them to transparent black
-	hg.clearRect(-0.5 * hWidth, -0.5 * hHeight, hWidth, hHeight);
+	hg.clearRect(-1 * hX, -1 * hY, 880, 880);
+	
+	hg.rotate(hRotation);
+
+
 
 	// set up aesthetics
 	style = getComputedStyle(harmonograph);

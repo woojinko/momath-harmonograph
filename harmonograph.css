@@ -1,7 +1,7 @@
 :root {
     --b-color: #000000;
     /* --b-color: rgba(48, 48, 48, 0.8); */
-    --text-color: #f59e8e;
+    /* --text-color: #dcbb13; */
     /* --current-pen-color: #91fcbc; */
     --pen-color-3: #91fcbc;
     --pen-color-4: #91fcbc;
@@ -14,8 +14,8 @@ body {
     /* background-image: url("2021GalaMainBackgroundGraphic.jpg");
     background-size: 50%;
     background-blend-mode: difference; */
+    /* color: var(--text-color); */
     background-color: var(--b-color); 
-    color: var(--text-color);
     font-size: 100%;
     text-align: center; 
     font-family: Helvetica, 'Lucida Grande', Verdana, Arial, Sans-Serif;
@@ -34,8 +34,11 @@ h1 {
 }
 
 h2 {
-    font-size: 2em;
+    position: relative;
+    top: -10px;
+    font-size: 2.2em;
     font-style: italic;
+    text-align: left;
 }
 
 h3 {
@@ -43,6 +46,8 @@ h3 {
 }
 
 table {
+    position: relative;
+    top: -30px;
     /* background-color: rgba(132, 96, 7, 0.6); */
 }
 
@@ -60,9 +65,8 @@ input {
     width: 4em; 
     text-align: center; 
     background: none; 
-    color:#cf89f7; 
-    border-color: #F0F2BC; 
-    border-width: 1px;
+    color:#a940e6; 
+    border: 1px solid #919191;
 }
 
 input.error {
@@ -79,59 +83,63 @@ button {
     font-size: 24px;
 }
 
-.copy {
-    font-size: .8em; 
-    color: #5D432F;
-}
-
-#save {
-    position: relative;
-    top: 400px;
-    right: 0px;
-	float: right;
+#saveButton, #submitButton {
+    width: 8em;
 }
 
 #colors {
     position: relative; 
     left: 0px;
+    top: -10px;
     width: 380px; 
     text-align: left;
+    color: #a91535;
 }
 
 #parameters {
     position: relative; 
     left: 0px; 
+    top: -40px;
     width: 380px; 
     text-align: left;
+    color: #1553a9;
 }
 
 #draw {
     position: relative; 
     text-align: left;
+    top: -50px;
+    color: #dcbb13;
 }
 
 #buttons {
     position: relative; 
     width: 480px; 
-    text-align: left;
+    top: -10px;
     font-size: 24px;
 }
 
 #harmonograph {
-    /* background-color: var(--b-color);  */
+    /* background-color: #721e1e; */
     position: absolute; 
-    top: -500px;
-    right: 0px;
-    /* stroke: var(--current-pen-color); */
+    top: -400px;
+    right: -100px;
+    border: 1px solid #919191;
     stroke: var(--pen-color-3);
-
 }
 
 #topview {
     position: relative;
-    left: 100px;
-    top: -150px;
+    left: 120px;
+    top: -490px;
     width: 300px;
+}
+
+#save {
+    position: relative;
+    top: -70px;
+    color: #338539;
+    /* right: 0px; */
 }
 /* 
 #dropboxButton {
