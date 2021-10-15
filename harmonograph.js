@@ -20,12 +20,15 @@ var vis1 = true, vis2 = true;
 
 
 var hScale = 1.5, hX = 500, hY = 500, hRotation = 0.7854;
-var dScale = 0.25, dWidth = 180, dHeight = 180, dRotation = hRotation;
+var dScale = 0.25, dX = 100, dY = 180, dRotation = hRotation;
 
 
 
 // initialize webpage
 function init() {
+	if (intId == null) {
+		startStop();
+	}
 	harmonInit();
 	diagramInit();
 	t = 0.0; ns = setns;
@@ -47,8 +50,6 @@ function harmonInit() {
 	
 	hg.rotate(hRotation);
 
-
-
 	// set up aesthetics
 	style = getComputedStyle(harmonograph);
 	penColor = style.getPropertyValue("--pen-color");
@@ -65,7 +66,7 @@ function diagramInit() {
 	sc = modelDiagram.getContext('2d');
 
 	// set transformations
-	sc.setTransform(dScale, 0, 0, -1 * dScale, dWidth, dHeight);
+	sc.setTransform(dScale, 0, 0, -1 * dScale, dX, dY);
 	sc.rotate(dRotation);
 
 	// erase existing pixels in drawing area by setting them to transparent black
@@ -81,26 +82,29 @@ function diagramInit() {
 // x(t) = A * sin(tf + p) * e^(-dt)
 function inputChange() {
 	updateColor();
-	A1x = read('A1x');
-	p1x = read('p1x') / 180.0 * Math.PI;
-	A1y = read('A1y');
-	p1y = read('p1y') / 180.0 * Math.PI;
-	td1 = read('td1');
-	f1 = read('f1');
+	A1x = readParam('A1x');
+	A2x = readParam('A2x');
+	A3x = readParam('A3x');
 
-	A2x = read('A2x');
-	p2x = read('p2x') / 180.0 * Math.PI;
-	A2y = read('A2y');
-	p2y = read('p2y') / 180.0 * Math.PI;
-	f2 = read('f2');
-	td2 = read('td2');
+	A1y = readParam('A1y');
+	A2y = readParam('A2y');
+	A3y = readParam('A3y');
 
-	A3x = read('A3x');
-	p3x = read('p3x') / 180.0 * Math.PI;
-	A3y = read('A3y');
-	p3y = read('p3y') / 180.0 * Math.PI;
-	f3 = read('f3');
-	td3 = read('td3');
+	p1x = readParam('p1x') / 180.0 * Math.PI;
+	p2x = readParam('p2x') / 180.0 * Math.PI;
+	p3x = readParam('p3x') / 180.0 * Math.PI;
+
+	p1y = readParam('p1y') / 180.0 * Math.PI;
+	p2y = readParam('p2y') / 180.0 * Math.PI;
+	p3y = readParam('p3y') / 180.0 * Math.PI;
+
+	td1 = readParam('td1');
+	td2 = readParam('td2');
+	td3 = readParam('td3');
+
+	f1 = readParam('f1');
+	f2 = readParam('f2');
+	f3 = readParam('f3');
 }
 
 // model harmonograph based on the movement of 3 damped pendulums
@@ -200,16 +204,25 @@ function showModelDiagram() {
 	else { document.getElementById('topview').style.visibility = "visible"; vis2 = true; }
 }
 
-function read(id) {
+function readParam(id) {
 	var input = document.getElementById(id);
 	var value = input.value;
 	var f = parseFloat(value);
 	if (isNaN(f)) {
 		input.className = 'error';
 	} else {
-		input.className = '';
+		input.className = 'slider';
 	}
+	var output = document.getElementById(id + "val");
+	output.innerHTML = f;
+
 	return f;
+}
+
+function read(id) {
+	var input = document.getElementById(id);
+	var value = input.value;
+	return parseFloat(value);
 }
 
 function updateColor() {
@@ -231,7 +244,6 @@ function updateElementColor(inputID, element, property) {
 }
 
 function savePng() {
-	var res = read('res');
 	// var png = document.createElement('canvas');
 	// png.width = res;
 	// png.height = res;
@@ -242,39 +254,7 @@ function savePng() {
 }
 
 function submitPng() {
-	var res = read('res');
 	save(harmonograph);
-	var options = {
-		files: [
-			// You can specify up to 100 files.
-			{'url': '...', 'filename': '...'},
-			{'url': '...', 'filename': '...'},
-			// ...
-		],
-	
-		// Success is called once all files have been successfully added to the user's
-		// Dropbox, although they may not have synced to the user's devices yet.
-		success: function () {
-			// Indicate to the user that the files have been saved.
-			alert("Success! Files saved to your Dropbox.");
-		},
-	
-		// Progress is called periodically to update the application on the progress
-		// of the user's downloads. The value passed to this callback is a float
-		// between 0 and 1. The progress callback is guaranteed to be called at least
-		// once with the value 1.
-		progress: function (progress) {},
-	
-		// Cancel is called if the user presses the Cancel button or closes the Saver.
-		cancel: function () {},
-	
-		// Error is called in the event of an unexpected response from the server
-		// hosting the files, such as not being able to find a file. This callback is
-		// also called if there is an error on Dropbox or if the user is over quota.
-		error: function (errorMessage) {}
-	};
-	var dropboxButton = Dropbox.createSaveButton(options);
-	document.getElementById("draw").appendChild(dropboxButton);
 }
 
 // try to implement later if I have time!
@@ -301,4 +281,7 @@ function save(hCanvas) {
 	}, 'image/png');
 }
 
+function resetParams() {
+	document.getElementById("resetParam").reset();
+}
 

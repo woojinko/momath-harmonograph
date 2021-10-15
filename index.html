@@ -73,7 +73,7 @@
 
 		<div id="parameters">
 			<h2> Step 2: Parameters</h2>
-			<form>
+			<form id="paramForm">
 				<table>
 					<tr class="head">
 						<td> </td>
@@ -83,63 +83,114 @@
 					</tr>
 					<tr>
 						<td class="label">&nbsp;Amplitude x</td>
-						<!-- <td><input type="range" min="50" max="150" value="100" class="slider" id="A1x"> </td>
-						<td><input type="range" min="50" max="150" value="100" class="slider" id="A2x"> </td>
-						<td><input type="range" min="50" max="150" value="100" class="slider" id="A3x"> </td> -->
-
-						<td><input id="A1x" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A2x" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A3x" value="100" onchange="inputChange()" /> </td>
+						<td class = "slidecontainer">
+							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A1x"> 
+							<span id="A1xval"></span>
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A2x"> 
+							<span id="A2xval"></span>
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A3x"> 
+							<span id="A3xval"></span>
+						</td>
 						<td>&nbsp;px</td>
 					</tr>
 					<tr>
 						<td class="label">Amplitude y</td>
-						<td><input id="A1y" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A2y" value="100" onchange="inputChange()" /> </td>
-						<td><input id="A3y" value="-100" onchange="inputChange()" /> </td>
+						<td class = "slidecontainer">
+							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A1y"> 
+							<span id="A1yval"></span>
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A2y"> 
+							<span id="A2yval"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="-150" max="-50" value="-100" onchange="inputChange()" class="slider" id="A3y"> 
+							<span id="A3yval"></span> 
+						</td>
 						<td>&nbsp;px</td>
 					</tr>
 					<tr>
 						<td class="label">Phase x</td>
-						<td><input id="p1x" value="0" onchange="inputChange()" /> </td>
-						<td><input id="p2x" value="90" onchange="inputChange()" /> </td>
-						<td><input id="p3x" value="0" onchange="inputChange()" /> </td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider" id="p1x"> 
+							<span id="p1xval"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="90" onchange="inputChange()" class="slider" id="p2x"> 
+							<span id="p2xval"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider" id="p3x"> 
+							<span id="p3xval"></span> 
+						</td>
 						<td>&nbsp;&deg;</td>
 					</tr>
 					<tr>
 						<td class="label">Phase y</td>
-						<td><input id="p1y" value="90" onchange="inputChange()" /> </td>
-						<td><input id="p2y" value="0" onchange="inputChange()" /> </td>
-						<td><input id="p3y" value="0" onchange="inputChange()" /> </td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="90" onchange="inputChange()" class="slider" id="p1y"> 
+							<span id="p1yval"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider" id="p2y"> 
+							<span id="p2yval"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider" id="p3y"> 
+							<span id="p3yval"></span> 
+						</td>
 						<td>&nbsp;&deg;</td>
 					</tr>
 					<tr>
 						<td class="label">Damping</td>
-						<td><input id="td1" value="180" onchange="inputChange()" /> </td>
-						<td><input id="td2" value="180" onchange="inputChange()" /> </td>
-						<td><input id="td3" value="80" onchange="inputChange()" /> </td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="180" onchange="inputChange()" class="slider" id="td1"> 
+							<span id="td1val"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="180" onchange="inputChange()" class="slider" id="td2"> 
+							<span id="td2val"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0" max="180" value="80" onchange="inputChange()" class="slider" id="td3"> 
+							<span id="td3val"></span> 
+						</td>
 						<td>&nbsp;s</td>
 					</tr>
 					<tr>
 						<td class="label">Frequency</td>
-						<td><input id="f1" value="1" onchange="inputChange()" /> </td>
-						<!-- <td><input id="f2" value="0.98" onchange="inputChange()" /> </td> -->
-						<td><input id="f2" value="0.7" onchange="inputChange()" /> </td>
-						<td><input id="f3" value="1" onchange="inputChange()" /> </td>
+						<td class = "slidecontainer">
+							<input type="range" min="0.0" max="2.0" value="1.0" step="0.1" onchange="inputChange()" class="slider" id="f1"> 
+							<span id="f1val"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range"min="0.0" max="2.0" value="0.7" step="0.1" onchange="inputChange()" class="slider" id="f2"> 
+							<span id="f2val"></span> 
+						</td>
+						<td class = "slidecontainer">
+							<input type="range" min="0.0" max="2.0" value="1.0" step="0.1" onchange="inputChange()" class="slider" id="f3"> 
+							<span id="f3val"></span> 
+						</td>
 						<td>&nbsp;Hz&nbsp;</td>
 					</tr>
 				</table>
+				<button id="resetParam" onclick="resetParams(), inputChange()"> Reset Parameters</input>
+				
 			</form>
 		</div>
 
 		<div id="draw">
 			<h2> Step 3: Draw </h1>
 				<div id="buttons">
-					<button id="startButton" onclick="startStop();">stop</button> <br>
-					<button onclick="init();"> reset</button> <br>
+					<button id="startButton" onclick="startStop();">Stop</button> <br>
+					<button onclick="init();"> Reset</button> <br>
 					<!-- <button onclick="showSettings();">settings</button> <br> -->
 					<!-- <button onclick="showModelDiagram();">diagram</button> <br> -->
-					<button onclick="speed();">speed</button><span id="spf">&nbsp; 1x</span>
+					<button onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>
 				</div>
 				<canvas id="harmonograph" width="880" height="880"> </canvas>
 		</div>
@@ -147,12 +198,8 @@
 		<br>
 
 		<div id="save">
-			<h2> Step 4: Save / Submit </h1>
+			<h2> Step 4: Save </h1>
 				<table class="input">
-					<tr>
-						<td class="desc">Output image size:</td>
-						<td class="input"><input type="number" id="res" min="0" value="640" /> pixels</td>
-					</tr>
 					<tr>
 						<td colspan="2">
 							<button type="button" id="saveButton" onclick="event.preventDefault(); savePng();">Save

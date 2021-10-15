@@ -1,7 +1,5 @@
 :root {
     --b-color: #000000;
-    /* --b-color: rgba(48, 48, 48, 0.8); */
-    /* --text-color: #dcbb13; */
     /* --current-pen-color: #91fcbc; */
     --pen-color-3: #91fcbc;
     --pen-color-4: #91fcbc;
@@ -14,7 +12,6 @@ body {
     /* background-image: url("2021GalaMainBackgroundGraphic.jpg");
     background-size: 50%;
     background-blend-mode: difference; */
-    /* color: var(--text-color); */
     background-color: var(--b-color); 
     font-size: 100%;
     text-align: center; 
@@ -48,6 +45,9 @@ h3 {
 table {
     position: relative;
     top: -30px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    
     /* background-color: rgba(132, 96, 7, 0.6); */
 }
 
@@ -56,13 +56,18 @@ tr.head {
     padding-bottom: 1em;
 }
 
+
 td.label {
     text-align: right; 
     padding-right: 1em;
 }
 
+td.slidecontainer {
+   text-align: center;
+}
+
+
 input {
-    width: 4em; 
     text-align: center; 
     background: none; 
     color:#a940e6; 
@@ -73,19 +78,68 @@ input.error {
     background-color: #fb1905;
 }
 
-button {
-    width: 4em; 
+#resetParam {
+    position: absolute;
+    bottom: -10px;
+    width: 9em;
     text-align: center; 
-    background: #721e1e; 
-    color: #F0F2BC; 
-    border-color: #F0F2BC; 
+    background: #950c69; 
+    color: #e6cbf8; 
+    border-color: #dcbcf2; 
     border-width: 1px;
     font-size: 24px;
 }
 
-#saveButton, #submitButton {
-    width: 8em;
+  /* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 90%; /* Full-width */
+    height: 15px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
 }
+  
+  /* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #a940e6; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+  
+.slider::-moz-range-thumb {
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #a940e6; /* Green background */
+    cursor: pointer;
+}
+
+button {
+    width: 4em; 
+    height: 1.5em;
+    text-align: center; 
+    background: #950c69; 
+    color: #e6cbf8; 
+    border-color: #dcbcf2; 
+    border-width: 1px;
+    font-size: 24px;
+}
+
+#saveButton, #submitButton, #resetParams{
+    width: 7em;
+}
+
 
 #colors {
     position: relative; 
@@ -102,52 +156,46 @@ button {
     top: -40px;
     width: 380px; 
     text-align: left;
-    color: #1553a9;
+    color: #1964c1
 }
 
 #draw {
     position: relative; 
     text-align: left;
-    top: -50px;
+    top: -30px;
     color: #dcbb13;
 }
 
 #buttons {
     position: relative; 
     width: 480px; 
-    top: -10px;
+    top: -20px;
     font-size: 24px;
 }
 
 #harmonograph {
     /* background-color: #721e1e; */
-    position: absolute; 
-    top: -400px;
-    right: -100px;
+    position: relative; 
+    bottom: 650px;
+    left: 420px;
     border: 1px solid #919191;
     stroke: var(--pen-color-3);
 }
 
 #topview {
     position: relative;
-    left: 120px;
-    top: -490px;
-    width: 300px;
+    left: 210px;
+    bottom: 1350px;
+    width: 200px;
+    height: 200px;
 }
 
 #save {
     position: relative;
-    top: -70px;
+    bottom: 980px;
     color: #338539;
     /* right: 0px; */
 }
-/* 
-#dropboxButton {
-    position: relative;
-    left: 100px;
-    top: -150px;
-    width: 300px;
-} */
 
 /* #text {position:absolute; 
     top: 1020px; 
