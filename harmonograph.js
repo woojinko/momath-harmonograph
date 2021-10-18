@@ -52,6 +52,7 @@ function harmonInit() {
 	style = getComputedStyle(harmonograph);
 	// penColor = style.getPropertyValue("--pen-color-3");
 	penColor = style.getPropertyValue("--current-pen-color");
+	console.log(penColor);
 	hg.strokeStyle = penColor;
 	hg.lineWidth = 0.5;
 	hg.globalAlpha = 0.75;
