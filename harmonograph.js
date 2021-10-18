@@ -50,8 +50,8 @@ function harmonInit() {
 
 	// set up aesthetics
 	style = getComputedStyle(harmonograph);
-	penColor = style.getPropertyValue("--pen-color-3");
-	console.log(penColor);
+	// penColor = style.getPropertyValue("--pen-color-3");
+	penColor = style.getPropertyValue("--current-pen-color");
 	hg.strokeStyle = penColor;
 	hg.lineWidth = 0.5;
 	hg.globalAlpha = 0.75;
@@ -249,10 +249,13 @@ function updateColor() {
 
 function updateElementColor(inputID, element, property) {
 	var elemInput = document.getElementById(inputID);
+	console.log(elemInput);
+
 	elemInput.addEventListener('change', function () {
 		var elemColor = elemInput.value;
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
+		console.log(elemColor);
 	})
 }
 
