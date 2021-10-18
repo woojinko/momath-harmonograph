@@ -1,0 +1,19 @@
+<svg width="512" height="666" viewBox="-100 -10 200 260" xmlns="http://www.w3.org/2000/svg">
+<title>Animated pendulum</title>
+<defs>
+	<radialGradient id="light" fx=".4" fy=".35" r=".65">
+		<stop stop-color="#FFF"/>
+		<stop stop-color="#BEBEBE" offset=".4"/>
+		<stop stop-color="#505050" offset="1"/>
+	</radialGradient>
+</defs>
+<line y2="250" stroke="blue" stroke-width=".5" stroke-dasharray="5,3"/>
+<g fill="none" stroke="#000">
+	<path d="M100 0H-100l15-10m5 10 15-10m5 10 15-10m5 10 15-10m5 10 15-10m5 10 15-10m5 10 15-10m5 10 15-10m5 10 15-10m5 10 15-10"/>
+	<g>
+		<line y2="200"/>
+		<circle cy="220" r="20" fill="url(#light)" stroke="none"/>
+		<animateTransform attributeName="transform" type="rotate" values="21;14.85;0;-14.85;-21;-14.85;0;14.85;21" calcMode="spline" keySplines=".33,0 .67,.37;.33,.26 .67,.63;.33,.37 .67,.74;.33,.63 .67,1;.33,0 .67,.37;.33,.26 .67,.63;.33,.37 .67,.74;.33,.63 .67,1" dur="6s" repeatCount="indefinite"/>
+	</g>
+</g>
+</svg>

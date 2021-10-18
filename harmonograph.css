@@ -1,11 +1,11 @@
 :root {
     --b-color: #000000;
-    --current-pen-color: #91fcbc; 
+    --current-pen-color: #37FF00; 
 
-    
-    /* --pen-color-3: #91fcbc;
-    --pen-color-4: #91fcbc;
-    --pen-color-5: #91fcbc; */
+
+    /* --pen-color-3: #37FF00;
+    --pen-color-4: #37FF00;
+    --pen-color-5: #37FF00; */
 
 
 }
@@ -209,5 +209,18 @@ button {
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
     stroke: var(--current-pen-color);
+}
 
+#pendCanvas {
+    position: absolute; 
+    height: 170%;
+    top: -200px;
+    left: -80px;
+}
+
+#modelDiagram {
+    position: absolute; 
+    width: 150%;
+    top: 150px;
+    left: -40px;
 }

@@ -256,8 +256,18 @@ function updateElementColor(inputID, element, property) {
 		var elemColor = elemInput.value;
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
-		console.log(elemColor);
 	})
+
+	// elemInput.addEventListener('focus', function () {
+	// 	setTimeout(()=> {
+	// 		var elemColor = elemInput.value;
+	// 		var elemName = document.querySelector(element);
+	// 		elemInput.setAttribute('type', 'text');
+	// 		elemInput.setAttribute('type', 'color');
+	// 		elemName.style.setProperty(property, elemColor);
+	// 		console.log(elemColor);
+	// 	}, 3000);
+	// });
 }
 
 function savePng() {
