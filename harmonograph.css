@@ -1,6 +1,6 @@
 :root {
     --b-color: #000000;
-    /* --current-pen-color: #91fcbc; */
+    /* --current-pen-color: #91fcbc;  */
     --pen-color-3: #91fcbc;
     --pen-color-4: #91fcbc;
     --pen-color-5: #91fcbc;
@@ -9,9 +9,6 @@
 }
 
 body {
-    /* background-image: url("2021GalaMainBackgroundGraphic.jpg");
-    background-size: 50%;
-    background-blend-mode: difference; */
     background-color: var(--b-color); 
     font-size: 100%;
     text-align: center; 
@@ -20,8 +17,10 @@ body {
 
 main {
     position: relative; 
+    top: -10px;
     text-align: center; 
-    width: 1200px; 
+    color: #daab1c;
+    width: 1380px; 
     margin: auto;
 }
 
@@ -32,7 +31,7 @@ h1 {
 
 h2 {
     position: relative;
-    top: -10px;
+    top: 10px;
     font-size: 2.2em;
     font-style: italic;
     text-align: left;
@@ -44,16 +43,18 @@ h3 {
 
 table {
     position: relative;
-    top: -30px;
+    top: -10px;
     border-spacing: 0px;
     border-collapse: collapse;
-    
     /* background-color: rgba(132, 96, 7, 0.6); */
+}
+
+tr {
+    padding-bottom: 2em;
 }
 
 tr.head {
     text-align: center; 
-    padding-bottom: 1em;
 }
 
 
@@ -64,13 +65,14 @@ td.label {
 
 td.slidecontainer {
    text-align: center;
+   width: 100px;
 }
 
 
 input {
     text-align: center; 
     background: none; 
-    color:#a940e6; 
+    color:#a91535; 
     border: 1px solid #919191;
 }
 
@@ -78,16 +80,9 @@ input.error {
     background-color: #fb1905;
 }
 
-#resetParam {
-    position: absolute;
-    bottom: -10px;
-    width: 9em;
-    text-align: center; 
-    background: #950c69; 
-    color: #e6cbf8; 
-    border-color: #dcbcf2; 
-    border-width: 1px;
-    font-size: 24px;
+.checkbox {
+    position: relative;
+    top: 100px;
 }
 
   /* The slider itself */
@@ -114,32 +109,46 @@ input.error {
     appearance: none;
     width: 20px; /* Set a specific slider handle width */
     height: 20px; /* Slider handle height */
-    background: #a940e6; /* Green background */
+    background: #a91535; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
   
 .slider::-moz-range-thumb {
     width: 20px; /* Set a specific slider handle width */
     height: 20px; /* Slider handle height */
-    background: #a940e6; /* Green background */
+    background: #a91535; /* Green background */
     cursor: pointer;
 }
 
 button {
-    width: 4em; 
-    height: 1.5em;
+    width: 8em; 
+    /* height: 1.5em; */
     text-align: center; 
-    background: #950c69; 
+    background: #95530c; 
+    color: #f8f8cb; 
+    border-color: #f8f8cb; 
+    /* background: #950c69; 
     color: #e6cbf8; 
-    border-color: #dcbcf2; 
+    border-color: #dcbcf2;  */
     border-width: 1px;
     font-size: 24px;
 }
 
-#saveButton, #submitButton, #resetParams{
-    width: 7em;
+#saveButton, #submitButton{
+    width: 5em;
 }
 
+#resetParamButton {
+    position: absolute;
+    /* bottom: -10px; */
+    width: 10em;
+    text-align: center; 
+    background: #95530c; 
+    color: #f8f8cb; 
+    border-color: #f8f8cb; 
+    border-width: 1px;
+    font-size: 24px;
+}
 
 #colors {
     position: relative; 
@@ -147,59 +156,56 @@ button {
     top: -10px;
     width: 380px; 
     text-align: left;
-    color: #a91535;
+    /* color: #a91535; */
 }
 
 #parameters {
     position: relative; 
     left: 0px; 
-    top: -40px;
-    width: 380px; 
+    top: -30px;
+    width: 480px; 
     text-align: left;
-    color: #1964c1
+    /* color: #1964c1 */
 }
 
 #draw {
     position: relative; 
+    top: 0px;
     text-align: left;
-    top: -30px;
-    color: #dcbb13;
+    /* color: #dcbb13; */
 }
 
 #buttons {
     position: relative; 
     width: 480px; 
-    top: -20px;
+    top: -10px;
     font-size: 24px;
 }
 
-#harmonograph {
-    /* background-color: #721e1e; */
-    position: relative; 
-    bottom: 650px;
-    left: 420px;
-    border: 1px solid #919191;
-    stroke: var(--pen-color-3);
-}
-
 #topview {
-    position: relative;
-    left: 210px;
-    bottom: 1350px;
-    width: 200px;
+    /* background-color: #721e1e; */
+    position: absolute;
+    left: 260px;
+    top: 500px;
+    width: 220px;
     height: 200px;
 }
 
 #save {
-    position: relative;
-    bottom: 980px;
-    color: #338539;
+    position: absolute;
+    top: 650px;
+    /* color: #338539; */
     /* right: 0px; */
 }
 
-/* #text {position:absolute; 
-    top: 1020px; 
-    left: 400px; 
-    width: 460px; 
-    text-align: left;
-} */
+
+#harmonograph {
+    /* background-color: #721e1e; */
+    position: absolute; 
+    top: -500px;
+    left: 500px;
+    border: 1px solid #919191;
+    /* stroke: var(--pen-color-3); */
+    stroke: var(--current-pen-color);
+
+}

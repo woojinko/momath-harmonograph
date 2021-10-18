@@ -1,7 +1,7 @@
 var s = 1;
 var x = 0.0, y = 0.0;
 var t = 0.0;
-var dt = 0.001;
+var dt = 0.0005;
 
 var R = 400.0;
 var Ax = 0.0, Ay = R, Bx = R, By = 0.0;
@@ -14,21 +14,19 @@ var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
 
 var harmonograph, hg, modelDiagram, md;
 var style, penColor;
+var defaultColor = "#000000";
 var intId = window.setInterval(step, 1000 * dt);;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
 
-var hScale = 1.5, hX = 500, hY = 500, hRotation = 0.7854;
-var dScale = 0.25, dX = 100, dY = 180, dRotation = hRotation;
+var hScale = 1.4, hX = 500, hY = 500, hRotation = 0.7854;
+var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 
 
 
 // initialize webpage
 function init() {
-	if (intId == null) {
-		startStop();
-	}
 	harmonInit();
 	diagramInit();
 	t = 0.0; ns = setns;
@@ -52,8 +50,8 @@ function harmonInit() {
 
 	// set up aesthetics
 	style = getComputedStyle(harmonograph);
-	penColor = style.getPropertyValue("--pen-color");
-
+	penColor = style.getPropertyValue("--pen-color-3");
+	console.log(penColor);
 	hg.strokeStyle = penColor;
 	hg.lineWidth = 0.5;
 	hg.globalAlpha = 0.75;
@@ -138,13 +136,25 @@ function step() {
 			t += dt;
 			swing();
 			style = getComputedStyle(harmonograph);
-			if (t % 3 < 1) {
-				penColor = style.getPropertyValue("--pen-color-3");
-			} else if (t % 3 < 2) {
-				penColor = style.getPropertyValue("--pen-color-4");
-			} else {
-				penColor = style.getPropertyValue("--pen-color-5");
-			}
+			// if (document.getElementById("rainbow").checked) {
+			// 	var rem = t % 6;
+			// 	// if (rem < 1) {
+			// 	// 	penColor = style.getPropertyValue("");
+			// 	// } else if (rem < 2) {
+			// 	// 	penColor = style.getPropertyValue("--pen-color-4");
+			// 	// } else {
+			// 	// 	penColor = style.getPropertyValue("--pen-color-5");
+			// 	// }
+			// } else {
+				// if (t % 3 < 1) {
+				// 	penColor = style.getPropertyValue("--pen-color-3");
+				// } else if (t % 3 < 2) {
+				// 	penColor = style.getPropertyValue("--pen-color-4");
+				// } else {
+				// 	penColor = style.getPropertyValue("--pen-color-5");
+				// }
+			// }
+			penColor = style.getPropertyValue("--current-pen-color");
 			hg.strokeStyle = penColor;
 			hg.lineTo(x, y);
 		}
@@ -156,7 +166,10 @@ function step() {
 		sc.beginPath(); sc.arc(Ax, Ay, 10, 0, 6.2832); sc.stroke();
 		sc.beginPath(); sc.arc(Bx, By, 10, 0, 6.2832); sc.stroke();
 		sc.beginPath(); sc.arc(Ax, By, 10, 0, 6.2832); sc.stroke();
-		sc.beginPath(); sc.arc(Ex, Ey, 200, 0, 6.2832); sc.fill(); sc.stroke();
+		sc.beginPath(); 
+		sc.rect(Ex-200, Ey-200, 400, 400);
+		// sc.arc(Ex, Ey, 200, 0, 6.2832); 
+		sc.fill(); sc.stroke();
 		sc.beginPath();
 		sc.moveTo(Ax, By);
 		sc.lineTo(Ex, Ey);
@@ -180,18 +193,18 @@ function startStop() {
 	var stab = document.getElementById('startButton');
 	if (intId == null) {
 		intId = window.setInterval(step, 1000 * dt);
-		stab.innerHTML = 'stop';
+		stab.innerHTML = 'Stop';
 	}
 	else {
 		window.clearInterval(intId);
 		intId = null;
-		stab.innerHTML = 'start';
+		stab.innerHTML = 'Start';
 	}
 }
 
 function speed() {
 	s = s * 2;
-	if (s > 128) { s = 1; };
+	if (s > 1024) { s = 1; };
 	document.getElementById('spf').innerHTML = "&nbsp; " + s + "x"
 }
 
@@ -226,11 +239,11 @@ function read(id) {
 }
 
 function updateColor() {
-	updateElementColor('c1', 'body', '--b-color');
-	// updateElementColor('c2', '#harmonograph', '--current-pen-color');
-	updateElementColor('c3', '#harmonograph', '--pen-color-3');
-	updateElementColor('c4', '#harmonograph', '--pen-color-4');
-	updateElementColor('c5', '#harmonograph', '--pen-color-5');
+	// updateElementColor('c1', 'body', '--b-color');
+	updateElementColor('c2', '#harmonograph', '--current-pen-color');
+	// updateElementColor('c3', '#harmonograph', '--pen-color-3');
+	// updateElementColor('c4', '#harmonograph', '--pen-color-4');
+	// updateElementColor('c5', '#harmonograph', '--pen-color-5');
 
 }
 

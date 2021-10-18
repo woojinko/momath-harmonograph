@@ -14,7 +14,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://harmonograph.momath.org/">
 	<meta property="og:description" content="A custom virtual Harmonograph for Momath's Annual Fundraising Gala 2021.">
-	<!-- <meta property="og:image" content="image.png"> -->
+	<!-- <meta property="og:image" content="MoMathHarmonographLogo.png"> -->
 
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-E23KN8G2WH"></script>
 	<script>
@@ -32,67 +32,68 @@
 </head>
 
 <body onload="init()">
-	<img src="MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="980" height="70">
-	<!-- <h1> Make your own!</h1> -->
+	<img src="momath_images/MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="1380" height="100">
 	<main>
-		<!-- <div id="personalize"> -->
 		<div id="colors">
-			<h2> Step 1: Colors</h2>
+			<h2> Select color</h2>
 			<form>
-				<table>
-					<table id="input" class="input">
-						<tr>
-							<td>Background color:</td>
-							<td class="input"><input type='color' id="c1" value=#000000 list="presets"
-									onchange="inputChange()" />
-								<datalist id="presets">
-									<option value=#000000>Black</option>
-									<option value=#ffffff> White</option>
-								</datalist>
-							</td>
-						</tr>
-						<!-- <tr>
-								<td>Pen color:</td>
-								<td><em>c2</em> =</td>
-								<td><input type='color' id="c2" value=#A1BAAB onchange="inputChange()" />
-								</td>
-							</tr> -->
-						<tr>
-							<td>Pen colors:</td>
-							<td>
-								<input type='color' id="c3" value=#91fcbc onchange="inputChange()" />
-								<input type='color' id="c4" value=#91fcbc onchange="inputChange()" />
-								<input type='color' id="c5" value=#91fcbc onchange="inputChange()" />
-								<!-- <input type='color' id="c6" value=#A1BAAB onchange="inputChange()" /> -->
-							</td>
-						</tr>
-					</table>
-					</td>
+				<table id="input" class="input">
+					<!-- <tr>
+						<td>Background:</td>c2
+						<td class="input"><input type='color' id="c1" value=#000000 list="presets"
+								onchange="inputChange()" />
+							<datalist id="presets">
+								<option value=#000000>Black</option>
+								<option value=#ffffff> White</option>
+							</datalist>
+						</td>
+					</tr> -->
+					<!-- <tr>
+						<td>
+							<input type="checkbox" id="rainbow" name="rainbow" value="rainbow" class="rainbow">
+							<label for="rainbow"> rainbow mode </label>
+						</td>
+					</tr> -->
+					<tr>
+						<td>Pen color:</td>
+						<td><em>c</em> =</td>
+						<td><input type='color' id="c2" value=#91fcbc onchange="inputChange()" />
+						</td>
+					</tr>
+					<!-- <tr>
+						<td>Pen colors:</td>
+						<td>
+							<input type='color' id="c3" value=#91fcbc onchange="inputChange()" />
+							<input type='color' id="c4" value=#91fcbc onchange="inputChange()" />
+							<input type='color' id="c5" value=#91fcbc onchange="inputChange()" />
+						</td>
+					</tr> -->
+				</table>
 			</form>
 		</div>
 
 		<div id="parameters">
-			<h2> Step 2: Parameters</h2>
+			<h2> Set parameters</h2>
 			<form id="paramForm">
 				<table>
 					<tr class="head">
 						<td> </td>
-						<td>Pend A</td>
-						<td>Pend B</td>
-						<td>Pend C</td>
+						<td>Pendulum A</td>
+						<td>Pendulum B</td>
+						<td>Pendulum C</td>
 					</tr>
 					<tr>
 						<td class="label">&nbsp;Amplitude x</td>
 						<td class = "slidecontainer">
-							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A1x"> 
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider" id="A1x"> 
 							<span id="A1xval"></span>
 						</td>
 						<td class = "slidecontainer">
-							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A2x"> 
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider" id="A2x"> 
 							<span id="A2xval"></span>
 						</td>
 						<td class = "slidecontainer">
-							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A3x"> 
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider" id="A3x"> 
 							<span id="A3xval"></span>
 						</td>
 						<td>&nbsp;px</td>
@@ -100,15 +101,15 @@
 					<tr>
 						<td class="label">Amplitude y</td>
 						<td class = "slidecontainer">
-							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A1y"> 
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider" id="A1y"> 
 							<span id="A1yval"></span>
 						</td>
 						<td class = "slidecontainer">
-							<input type="range" min="50" max="150" value="100" onchange="inputChange()" class="slider" id="A2y"> 
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider" id="A2y"> 
 							<span id="A2yval"></span> 
 						</td>
 						<td class = "slidecontainer">
-							<input type="range" min="-150" max="-50" value="-100" onchange="inputChange()" class="slider" id="A3y"> 
+							<input type="range" min="-120" max="-80" value="-100" onchange="inputChange()" class="slider" id="A3y"> 
 							<span id="A3yval"></span> 
 						</td>
 						<td>&nbsp;px</td>
@@ -164,32 +165,30 @@
 					<tr>
 						<td class="label">Frequency</td>
 						<td class = "slidecontainer">
-							<input type="range" min="0.0" max="2.0" value="1.0" step="0.1" onchange="inputChange()" class="slider" id="f1"> 
+							<input type="range" min="0.0" max="2.0" value="1.0" step="0.05" onchange="inputChange()" class="slider" id="f1"> 
 							<span id="f1val"></span> 
 						</td>
 						<td class = "slidecontainer">
-							<input type="range"min="0.0" max="2.0" value="0.7" step="0.1" onchange="inputChange()" class="slider" id="f2"> 
+							<input type="range"min="0.0" max="2.0" value="0.7" step="0.05" onchange="inputChange()" class="slider" id="f2"> 
 							<span id="f2val"></span> 
 						</td>
 						<td class = "slidecontainer">
-							<input type="range" min="0.0" max="2.0" value="1.0" step="0.1" onchange="inputChange()" class="slider" id="f3"> 
+							<input type="range" min="0.00" max="2.00" value="1.00" step="0.05" onchange="inputChange()" class="slider" id="f3"> 
 							<span id="f3val"></span> 
 						</td>
 						<td>&nbsp;Hz&nbsp;</td>
 					</tr>
 				</table>
-				<button id="resetParam" onclick="resetParams(), inputChange()"> Reset Parameters</input>
+				<button id="resetParamButton" onclick="resetParams(), inputChange()"> Reset parameters</input>
 				
 			</form>
 		</div>
 
 		<div id="draw">
-			<h2> Step 3: Draw </h1>
+			<h2> Draw </h1>
 				<div id="buttons">
 					<button id="startButton" onclick="startStop();">Stop</button> <br>
-					<button onclick="init();"> Reset</button> <br>
-					<!-- <button onclick="showSettings();">settings</button> <br> -->
-					<!-- <button onclick="showModelDiagram();">diagram</button> <br> -->
+					<button onclick="init();"> Clear drawing </button> <br>
 					<button onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>
 				</div>
 				<canvas id="harmonograph" width="880" height="880"> </canvas>
@@ -198,18 +197,17 @@
 		<br>
 
 		<div id="save">
-			<h2> Step 4: Save </h1>
+			<h2> Save </h1>
 				<table class="input">
 					<tr>
 						<td colspan="2">
-							<button type="button" id="saveButton" onclick="event.preventDefault(); savePng();">Save
-								PNG</button>
+							<button type="button" id="saveButton" onclick="event.preventDefault(); savePng();">Save</button>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<button type="button" id="submitButton"
-								onclick="event.preventDefault(); submitPng();">Submit PNG</button>
+								onclick="event.preventDefault(); submitPng();">Submit</button>
 						</td>
 					</tr>
 				</table>
