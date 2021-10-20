@@ -32,7 +32,8 @@
 </head>
 
 <body onload="init()">
-	<img src="momath_images/MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="1380" height="100">
+	<img class="logo1" src="momath_images/MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="1300" height="100">
+	<img class="logo2" src="momath_images/MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="1300" height="100">
 	<main>
 		<div id="colors">
 			<h2> Select color</h2>
@@ -268,7 +269,9 @@
 					<button onclick="init();"> Clear drawing </button> <br>
 					<button onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>
 				</div>
-				<canvas id="harmonograph" width="880" height="880"> </canvas>
+				<canvas id="harmonographSmall" width="880" height="880"> </canvas>
+				<canvas id="harmonographBig" width="1180" height="1180"> </canvas>
+
 		</div>
 		<br>
 		<br>
