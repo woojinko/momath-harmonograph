@@ -20,7 +20,8 @@ var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
 
-var hScale = 1.4, hX = 500, hY = 500, hRotation = 0.7854;
+var hScale = 1.4, hX = 500, hY = 500, hRotation = 0;
+// var hRotation = 0.7854;
 var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 
 
@@ -28,7 +29,7 @@ var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 // initialize webpage
 function init() {
 	harmonInit();
-	diagramInit();
+	// diagramInit();
 	t = 0.0; ns = setns;
 	inputChange();
 	swing();
@@ -52,30 +53,30 @@ function harmonInit() {
 	style = getComputedStyle(harmonograph);
 	// penColor = style.getPropertyValue("--pen-color-3");
 	penColor = style.getPropertyValue("--current-pen-color");
-	console.log(penColor);
+	// console.log(penColor);
 	hg.strokeStyle = penColor;
 	hg.lineWidth = 0.5;
 	hg.globalAlpha = 0.75;
 }
 
-// helper function to initialize diagram
-function diagramInit() {
-	modelDiagram = document.getElementById('modelDiagram');
-	// get 2D drawing context on the canvas
-	sc = modelDiagram.getContext('2d');
+// // helper function to initialize diagram
+// function diagramInit() {
+// 	modelDiagram = document.getElementById('modelDiagram');
+// 	// get 2D drawing context on the canvas
+// 	sc = modelDiagram.getContext('2d');
 
-	// set transformations
-	sc.setTransform(dScale, 0, 0, -1 * dScale, dX, dY);
-	sc.rotate(dRotation);
+// 	// set transformations
+// 	sc.setTransform(dScale, 0, 0, -1 * dScale, dX, dY);
+// 	sc.rotate(dRotation);
 
-	// erase existing pixels in drawing area by setting them to transparent black
-	sc.clearRect(-560, -560, modelDiagram.width * 4, modelDiagram.height * 4);
+// 	// erase existing pixels in drawing area by setting them to transparent black
+// 	sc.clearRect(-560, -560, modelDiagram.width * 4, modelDiagram.height * 4);
 
-	// set up aesthetics
-	sc.fillStyle = "rgba(255, 255, 255, 0.7)";
-	sc.lineWidth = 4;
-	sc.globalAlpha = 0.8;
-}
+// 	// set up aesthetics
+// 	sc.fillStyle = "rgba(255, 255, 255, 0.7)";
+// 	sc.lineWidth = 4;
+// 	sc.globalAlpha = 0.8;
+// }
 
 // read and set current inputs
 // x(t) = A * sin(tf + p) * e^(-dt)
@@ -160,30 +161,30 @@ function step() {
 			hg.lineTo(x, y);
 		}
 		hg.stroke();
-		sc.clearRect(-680, -680, 1600, 1600);
 
-		sc.strokeStyle = "#f59e8e";
-		sc.strokeRect(Ax - 80, By - 80, Bx - Ax + 160, Ay - By + 160);
-		sc.beginPath(); sc.arc(Ax, Ay, 10, 0, 6.2832); sc.stroke();
-		sc.beginPath(); sc.arc(Bx, By, 10, 0, 6.2832); sc.stroke();
-		sc.beginPath(); sc.arc(Ax, By, 10, 0, 6.2832); sc.stroke();
-		sc.beginPath(); 
-		sc.rect(Ex-200, Ey-200, 400, 400);
-		// sc.arc(Ex, Ey, 200, 0, 6.2832); 
-		sc.fill(); sc.stroke();
-		sc.beginPath();
-		sc.moveTo(Ax, By);
-		sc.lineTo(Ex, Ey);
-		sc.stroke();
+		// sc.clearRect(-680, -680, 1600, 1600);
+		// sc.strokeStyle = "#f59e8e";
+		// sc.strokeRect(Ax - 80, By - 80, Bx - Ax + 160, Ay - By + 160);
+		// sc.beginPath(); sc.arc(Ax, Ay, 10, 0, 6.2832); sc.stroke();
+		// sc.beginPath(); sc.arc(Bx, By, 10, 0, 6.2832); sc.stroke();
+		// sc.beginPath(); sc.arc(Ax, By, 10, 0, 6.2832); sc.stroke();
+		// sc.beginPath(); 
+		// sc.rect(Ex-200, Ey-200, 400, 400);
+		// // sc.arc(Ex, Ey, 200, 0, 6.2832); 
+		// sc.fill(); sc.stroke();
+		// sc.beginPath();
+		// sc.moveTo(Ax, By);
+		// sc.lineTo(Ex, Ey);
+		// sc.stroke();
 
-		sc.strokeStyle = "#f59e8e";
-		sc.beginPath();
-		sc.moveTo(Ax, Ay);
-		sc.lineTo(Cx, Cy);
-		sc.lineTo(Px, Py);
-		sc.lineTo(Dx, Dy);
-		sc.lineTo(Bx, By);
-		sc.stroke();
+		// sc.strokeStyle = "#f59e8e";
+		// sc.beginPath();
+		// sc.moveTo(Ax, Ay);
+		// sc.lineTo(Cx, Cy);
+		// sc.lineTo(Px, Py);
+		// sc.lineTo(Dx, Dy);
+		// sc.lineTo(Bx, By);
+		// sc.stroke();
 		ns -= 1;
 		if (ns <= 0) { window.clearInterval(intId); }
 	}
@@ -250,7 +251,7 @@ function updateColor() {
 
 function updateElementColor(inputID, element, property) {
 	var elemInput = document.getElementById(inputID);
-	console.log(elemInput);
+	// console.log(elemInput);
 
 	elemInput.addEventListener('change', function () {
 		var elemColor = elemInput.value;

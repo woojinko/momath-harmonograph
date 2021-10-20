@@ -87,38 +87,36 @@ input.error {
     top: 100px;
 }
 
-  /* The slider itself */
 .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
+    -webkit-appearance: none;
     appearance: none;
-    width: 90%; /* Full-width */
-    height: 15px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    width: 90%;
+    height: 15px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
     transition: opacity .2s;
 }
   
-  /* Mouse-over effects */
+
 .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
+    opacity: 1;
 }
   
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+    -webkit-appearance: none;
     appearance: none;
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
-    background: #a91535; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    width: 20px;
+    height: 20px;
+    background: #a91535;
+    cursor: pointer;
 }
   
 .slider::-moz-range-thumb {
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
-    background: #a91535; /* Green background */
+    width: 20px;
+    height: 20px;
+    background: #a91535;
     cursor: pointer;
 }
 
@@ -213,9 +211,10 @@ button {
 
 #pendCanvas {
     position: absolute; 
-    height: 170%;
-    top: -200px;
-    left: -80px;
+    height: 250%;
+    top: -250px;
+    left: -150px;
+    /* background-color: blue; */
 }
 
 #modelDiagram {
