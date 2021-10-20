@@ -286,14 +286,14 @@
 						<td colspan="2">
 							<button type="button" id="submitButton"
 								onclick="event.preventDefault(); submitPng();">Submit</button>
-							<form action="upload.php" method="post" enctype="multipart/form-data">
-								Select image to upload:
-								<input type="file" name="fileToUpload" id="fileToUpload">
-								<input type="submit" value="Upload Image" name="submit">
-							</form>
 						</td>
 					</tr>
 				</table>
+				<form action="upload.php" method="post" enctype="multipart/form-data">
+					Select:
+					<input type="file" name="fileToUpload" id="fileToUpload">
+					<input type="submit" value="Upload Image" name="submit">
+				</form>
 		</div>
 	</main>
 </body>
