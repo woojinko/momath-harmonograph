@@ -20,11 +20,12 @@ var intId = window.setInterval(step, 1000 * dt);;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
-
 var hSmallScale = 1.4, hSmallX = 500, hSmallY = 500, hRotation = 0;
 var hBigScale = 2, hBigX = 650, hBigY = 650;
 // var hRotation = 0.7854;
 var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
+
+var rainbowMode = false;
 
 
 
@@ -207,25 +208,24 @@ function step() {
 			t += dt;
 			swing();
 			style = getComputedStyle(harmonographSmall);
-			// if (document.getElementById("rainbow").checked) {
-			// 	var rem = t % 6;
-			// 	// if (rem < 1) {
-			// 	// 	penColor = style.getPropertyValue("");
-			// 	// } else if (rem < 2) {
-			// 	// 	penColor = style.getPropertyValue("--pen-color-4");
-			// 	// } else {
-			// 	// 	penColor = style.getPropertyValue("--pen-color-5");
-			// 	// }
-			// } else {
-			// if (t % 3 < 1) {
-			// 	penColor = style.getPropertyValue("--pen-color-3");
-			// } else if (t % 3 < 2) {
-			// 	penColor = style.getPropertyValue("--pen-color-4");
-			// } else {
-			// 	penColor = style.getPropertyValue("--pen-color-5");
-			// }
-			// }
-			penColor = style.getPropertyValue("--current-pen-color");
+			if (rainbowMode) {
+				var rem = t * 0.1 % 6;
+				if (rem < 1) {
+					penColor = "rgb(255, 0, 0)";
+				} else if (rem < 2) {
+					penColor = "rgb(255, 100, 0)";
+				} else if (rem < 3) {
+					penColor = "rgb(255, 255, 0)";
+				} else if (rem < 4) {
+					penColor = "rgb(100, 255, 0)";
+				} else if (rem < 5) {
+					penColor = "rgb(0, 255, 255)";
+				} else {
+					penColor = "rgb(150, 0, 255)";
+				}
+			} else {
+				penColor = style.getPropertyValue("--current-pen-color");
+			}
 			hgSmall.strokeStyle = penColor;
 			hgSmall.lineTo(x, y);
 			hgBig.strokeStyle = penColor;
@@ -330,17 +330,6 @@ function updateElementColor(inputID, element, property) {
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
 	})
-
-	// elemInput.addEventListener('focus', function () {
-	// 	setTimeout(()=> {
-	// 		var elemColor = elemInput.value;
-	// 		var elemName = document.querySelector(element);
-	// 		elemInput.setAttribute('type', 'text');
-	// 		elemInput.setAttribute('type', 'color');
-	// 		elemName.style.setProperty(property, elemColor);
-	// 		console.log(elemColor);
-	// 	}, 3000);
-	// });
 }
 
 function savePng() {
@@ -382,9 +371,21 @@ function save(hCanvas) {
 	}, 'image/png');
 }
 
+function rainbowToggle(){
+	rainbowMode = !rainbowMode;
+	console.log(rainbowMode);
+	if (rainbowMode) {
+		// document.getElementById("rainbowmode").style.background = "rgb(255,255,255)";
+	} else {
+		// document.getElementById("rainbowmode").style.background = "rgb(0, 0, 0)";
+	}
+}
+
 function resetParams() {
 	document.getElementById("resetParam").reset();
 }
+
+
 
 // function PendulumSim(length_m, gravity_mps2, initialAngle_rad, timestep_ms, callback) {
 // 	var velocity = 0;
