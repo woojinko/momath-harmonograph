@@ -154,7 +154,7 @@ button {
 #parameters {
     position: relative; 
     left: 0px; 
-    top: -30px;
+    top: -50px;
     width: 880px; 
     text-align: left;
     /* color: #1964c1 */
@@ -162,7 +162,7 @@ button {
 
 #draw {
     position: relative; 
-    top: -30px;
+    top: -70px;
     text-align: left;
     /* color: #dcbb13; */
 }
@@ -196,7 +196,7 @@ button {
 #harmonographSmall {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -820px;
+    top: -780px;
     left: 750px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
@@ -205,7 +205,7 @@ button {
 
 #harmonographBig {
     position: absolute; 
-    top: -800px;
+    top: -900px;
     right: 300px;
     border: 0px solid #919191;
     /* stroke: var(--pen-color-3); */
