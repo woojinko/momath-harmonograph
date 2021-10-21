@@ -205,7 +205,7 @@ button {
 #harmonograph {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -550px;
+    top: -550px; 
     left: 500px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */

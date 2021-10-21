@@ -24,6 +24,8 @@ var hScale = 1.4, hX = 500, hY = 500, hRotation = 0;
 // var hRotation = 0.7854;
 var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 
+var rainbowMode = false;
+
 
 
 // initialize webpage
@@ -178,25 +180,24 @@ function step() {
 			t += dt;
 			swing();
 			style = getComputedStyle(harmonograph);
-			// if (document.getElementById("rainbow").checked) {
-			// 	var rem = t % 6;
-			// 	// if (rem < 1) {
-			// 	// 	penColor = style.getPropertyValue("");
-			// 	// } else if (rem < 2) {
-			// 	// 	penColor = style.getPropertyValue("--pen-color-4");
-			// 	// } else {
-			// 	// 	penColor = style.getPropertyValue("--pen-color-5");
-			// 	// }
-			// } else {
-			// if (t % 3 < 1) {
-			// 	penColor = style.getPropertyValue("--pen-color-3");
-			// } else if (t % 3 < 2) {
-			// 	penColor = style.getPropertyValue("--pen-color-4");
-			// } else {
-			// 	penColor = style.getPropertyValue("--pen-color-5");
-			// }
-			// }
-			penColor = style.getPropertyValue("--current-pen-color");
+			if (rainbowMode) {
+				var rem = t * 0.1 % 6;
+				if (rem < 1) {
+					penColor = "rgb(255, 0, 0)";
+				} else if (rem < 2) {
+					penColor = "rgb(255, 100, 0)";
+				} else if (rem < 3) {
+					penColor = "rgb(255, 255, 0)";
+				} else if (rem < 4) {
+					penColor = "rgb(100, 255, 0)";
+				} else if (rem < 5) {
+					penColor = "rgb(0, 255, 255)";
+				} else {
+					penColor = "rgb(150, 0, 255)";
+				}
+			} else {
+				penColor = style.getPropertyValue("--current-pen-color");
+			}
 			hg.strokeStyle = penColor;
 			hg.lineTo(x, y);
 		}
@@ -352,6 +353,16 @@ function save(hCanvas) {
 
 function resetParams() {
 	document.getElementById("resetParam").reset();
+}
+
+function rainbowToggle(){
+	rainbowMode = !rainbowMode;
+	console.log(rainbowMode);
+	if (rainbowMode) {
+		// document.getElementById("rainbowmode").style.background = "rgb(255,255,255)";
+	} else {
+		// document.getElementById("rainbowmode").style.background = "rgb(0, 0, 0)";
+	}
 }
 
 // function PendulumSim(length_m, gravity_mps2, initialAngle_rad, timestep_ms, callback) {
