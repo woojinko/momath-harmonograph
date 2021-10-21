@@ -375,9 +375,9 @@ function rainbowToggle(){
 	rainbowMode = !rainbowMode;
 	console.log(rainbowMode);
 	if (rainbowMode) {
-		// document.getElementById("rainbowmode").style.background = "rgb(255,255,255)";
+		document.getElementById("rainbowButton").style.background = "rgb(255,255,255)";
 	} else {
-		// document.getElementById("rainbowmode").style.background = "rgb(0, 0, 0)";
+		document.getElementById("rainbowButton").style.background = "rgb(0, 0, 0)";
 	}
 }
 
