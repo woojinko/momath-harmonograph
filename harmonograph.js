@@ -20,7 +20,7 @@ var intId = window.setInterval(step, 1000 * dt);;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
-var hSmallScale = 1.4, hSmallX = 500, hSmallY = 500, hRotation = 0;
+var hSmallScale = 1.4, hSmallX = 470, hSmallY = 490, hRotation = 0;
 var hBigScale = 2, hBigX = 650, hBigY = 650;
 // var hRotation = 0.7854;
 var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
