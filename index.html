@@ -39,16 +39,6 @@
 			<h2> Select color</h2>
 			<form>
 				<table id="input" class="input">
-					<!-- <tr>
-						<td>Background:</td>c2
-						<td class="input"><input type='color' id="c1" value=#000000 list="presets"
-								onchange="inputChange()" />
-							<datalist id="presets">
-								<option value=#000000>Black</option>
-								<option value=#ffffff> White</option>
-							</datalist>
-						</td>
-					</tr> -->
 					<tr>
 						<td class="label">Pen color:</td>
 						<td><em>c</em> =</td>
@@ -107,7 +97,7 @@
 					context.globalCompositeOperation = "destination-out";
 					context.fillRect(0, 0, canvas.width, canvas.height);
 
-					context.fillStyle = "yellow";
+					context.fillStyle = "white";
 					context.strokeStyle = "rgba(0,0,0," + Math.max(0, 1 - Math.abs(prev - angle) * 10) + ")";
 					context.globalCompositeOperation = "source-over";
 
