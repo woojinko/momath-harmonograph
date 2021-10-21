@@ -16,7 +16,7 @@ var harmonographSmall, hgSmall, modelDiagram, md;
 var harmonographBig, hgBig;
 var style, penColor;
 var defaultColor = "#000000";
-var intId = window.setInterval(step, 1000 * dt);;
+var intId;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
@@ -31,7 +31,6 @@ var rainbowMode = false;
 
 // initialize webpage
 function init() {
-	startStop();
 	harmonSmallInit();
 	harmonBigInit();
 	// diagramInit();
@@ -39,6 +38,12 @@ function init() {
 	t = 0.0; ns = setns;
 	inputChange();
 	swing();
+	var stab = document.getElementById('startButton');
+	if (intId != null) {
+		stab.innerHTML = 'Start';
+		window.clearInterval(intId);
+		intId = null;
+	}
 }
 
 // helper function to initialize harmonograph
@@ -61,7 +66,7 @@ function harmonSmallInit() {
 	penColor = style.getPropertyValue("--current-pen-color");
 	// console.log(penColor);
 	hgSmall.strokeStyle = penColor;
-	hgSmall.lineWidth = 0.5;
+	hgSmall.lineWidth = 1;
 	hgSmall.globalAlpha = 0.75;
 }
 
