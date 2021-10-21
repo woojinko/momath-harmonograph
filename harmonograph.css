@@ -19,7 +19,7 @@ body {
 
 main {
     position: relative; 
-    top: 150px;
+    top: 120px;
     text-align: center; 
     color: #daab1c;
     
@@ -196,7 +196,7 @@ button {
 #harmonographSmall {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -730px;
+    top: -700px;
     left: 750px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
@@ -205,7 +205,7 @@ button {
 
 #harmonographBig {
     position: absolute; 
-    top: -950px;
+    top: -930px;
     right: 300px;
     border: 0px solid #919191;
     /* stroke: var(--pen-color-3); */
