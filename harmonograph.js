@@ -314,12 +314,10 @@ function read(id) {
 }
 
 function updateColor() {
-	// updateElementColor('c1', 'body', '--b-color');
 	updateElementColor('c2', '#harmonographSmall', '--current-pen-color');
-	// updateElementColor('c3', '#harmonographSmall', '--pen-color-3');
-	// updateElementColor('c4', '#harmonographSmall', '--pen-color-4');
-	// updateElementColor('c5', '#harmonographSmall', '--pen-color-5');
-
+	if (rainbowMode) {
+		rainbowToggle();
+	}
 }
 
 function updateElementColor(inputID, element, property) {
