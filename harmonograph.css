@@ -34,7 +34,7 @@ h1 {
 h2 {
     position: relative;
     top: 10px;
-    font-size: 2.2em;
+    font-size: 3em;
     font-style: italic;
     text-align: left;
 }
@@ -59,6 +59,9 @@ tr.head {
     text-align: center; 
 }
 
+td {
+    font-size: 1.5em;
+}
 
 td.label {
     text-align: right; 
@@ -67,11 +70,12 @@ td.label {
 
 td.slidecontainer {
    text-align: center;
-   width: 100px;
+   width: 150px;
 }
 
 
 input {
+    width: 5em;
     text-align: center; 
     background: none; 
     color:#a91535; 
@@ -82,16 +86,11 @@ input.error {
     background-color: #fb1905;
 }
 
-.checkbox {
-    position: relative;
-    top: 100px;
-}
-
 .slider {
     -webkit-appearance: none;
     appearance: none;
     width: 90%;
-    height: 15px;
+    height: 30px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
@@ -106,15 +105,15 @@ input.error {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #a91535;
     cursor: pointer;
 }
   
 .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #a91535;
     cursor: pointer;
 }
@@ -126,11 +125,11 @@ button {
     color: #f8f8cb; 
     border-color: #f8f8cb; 
     border-width: 1px;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 #saveButton, #submitButton{
-    width: 5em;
+    width: 4em;
 }
 
 #rainbowButton {
@@ -141,21 +140,14 @@ button {
 }
 
 #resetParamButton {
-    position: absolute;
     width: 10em;
-    text-align: center; 
-    background: #95530c; 
-    color: #f8f8cb; 
-    border-color: #f8f8cb; 
-    border-width: 1px;
-    font-size: 24px;
 }
 
 #colors {
     position: relative; 
     left: 0px;
     top: -10px;
-    width: 380px; 
+    width: 880px; 
     text-align: left;
     /* color: #a91535; */
 }
@@ -164,7 +156,7 @@ button {
     position: relative; 
     left: 0px; 
     top: -30px;
-    width: 480px; 
+    width: 880px; 
     text-align: left;
     /* color: #1964c1 */
 }
@@ -205,7 +197,7 @@ button {
 #harmonographSmall {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -500px;
+    top: -800px;
     left: 750px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
