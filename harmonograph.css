@@ -206,8 +206,8 @@ button {
 #harmonographBig {
     position: absolute; 
     top: -930px;
-    /* right: 270px; */
-    left: 3600px;
+    right: 270px;
+    /* left: 3000px; */
     border: 0px solid #919191;
     /* stroke: var(--pen-color-3); */
     stroke: var(--current-pen-color);
