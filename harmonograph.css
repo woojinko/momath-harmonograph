@@ -22,7 +22,7 @@ main {
     top: 150px;
     text-align: center; 
     color: #daab1c;
-    width: 2560px; 
+    
     margin: auto;
 }
 
@@ -98,7 +98,7 @@ input.error {
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
-  
+
 .slider:hover {
     opacity: 1;
 }
@@ -186,15 +186,17 @@ button {
 #topview {
     /* background-color: #721e1e; */
     position: absolute;
-    left: 230px;
-    top: 570px;
+    left: 260px;
+    top: 500px;
     width: 220px;
     height: 200px;
+    display: none;
 }
 
 #save {
     position: absolute;
-    top: 700px;
+    top: 650px;
+    display:  none;
     /* color: #338539; */
     /* right: 0px; */
 }
@@ -204,7 +206,7 @@ button {
     /* background-color: #721e1e; */
     position: absolute; 
     top: -500px;
-    left: 450px;
+    left: 750px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
     stroke: var(--current-pen-color);
@@ -212,9 +214,9 @@ button {
 
 #harmonographBig {
     position: absolute; 
-    top: -500px;
-    right: 0px;
-    border: 1px solid #919191;
+    top: -800px;
+    right: 300px;
+    border: 0px solid #919191;
     /* stroke: var(--pen-color-3); */
     stroke: var(--current-pen-color);
 }
@@ -233,21 +235,20 @@ button {
     top: 150px;
     left: -40px;
 }
-
-img.logo1 {
-    position: absolute;
-    left: 0px;
-}
-
 #largeScreen {
     position: absolute;
     right: 100px;
     top: -600px;
 }
+img.logo1 {
+    position: absolute;
+    left: 300px;
+}
 
 img.logo2 {
     position: absolute;
     left: 1350px;
+    display: none;
 }
 
 img.rainbowarc {
