@@ -38,26 +38,17 @@
 			<h2> Select color</h2>
 			<form>
 				<table id="input" class="input">
-					<!-- <tr>
-						<td>Background:</td>c2
-						<td class="input"><input type='color' id="c1" value=#000000 list="presets"
-								onchange="inputChange()" />
-							<datalist id="presets">
-								<option value=#000000>Black</option>
-								<option value=#ffffff> White</option>
-							</datalist>
-						</td>
-					</tr> -->
-					<!-- <tr>
-						<td>
-							<input type="checkbox" id="rainbow" name="rainbow" value="rainbow" class="rainbow">
-							<label for="rainbow"> rainbow mode </label>
-						</td>
-					</tr> -->
 					<tr>
-						<td>Pen color:</td>
+						<td class="label">Pen color:</td>
 						<td><em>c</em> =</td>
 						<td><input type='color' id="c2" value=#37FF00 onchange="inputChange()" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Rainbow mode: </td>
+						<td><em>r</em> =</td>
+						<td> 
+							<button id="rainbowButton" onclick="event.preventDefault(); rainbowToggle()"> <img id="rainbow" src="momath_images/rainbow-arc.png" alt="rainbow" width="40px" height="40px"> </button>
 						</td>
 					</tr>
 					<!-- <tr>
