@@ -27,7 +27,6 @@ var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 var rainbowMode = false;
 
 
-
 // initialize webpage
 function init() {
 	harmonInit();
