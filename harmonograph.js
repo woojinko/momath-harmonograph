@@ -31,6 +31,7 @@ var rainbowMode = false;
 
 // initialize webpage
 function init() {
+	startStop();
 	harmonSmallInit();
 	harmonBigInit();
 	// diagramInit();
