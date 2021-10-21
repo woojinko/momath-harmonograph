@@ -8,12 +8,6 @@
     --pen-green: rgb(100, 255, 0);
     --pen-blue: rgb(0, 255, 255);;
     --pen-purple: rgb(150, 0, 255);
-
-    /* --pen-color-3: #37FF00;
-    --pen-color-4: #37FF00;
-    --pen-color-5: #37FF00; */
-
-
 }
 
 body {
@@ -105,7 +99,6 @@ input.error {
     transition: opacity .2s;
 }
   
-
 .slider:hover {
     opacity: 1;
 }
@@ -140,7 +133,6 @@ button {
     width: 5em;
 }
 
-
 #rainbowButton {
     width: 2em;
     height: 2em;
@@ -150,7 +142,6 @@ button {
 
 #resetParamButton {
     position: absolute;
-    /* bottom: -10px; */
     width: 10em;
     text-align: center; 
     background: #95530c; 
@@ -246,6 +237,12 @@ button {
 img.logo1 {
     position: absolute;
     left: 0px;
+}
+
+#largeScreen {
+    position: absolute;
+    right: 100px;
+    top: -600px;
 }
 
 img.logo2 {
