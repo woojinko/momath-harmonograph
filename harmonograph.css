@@ -73,7 +73,6 @@ td.slidecontainer {
    width: 150px;
 }
 
-
 input {
     width: 5em;
     text-align: center; 
@@ -90,7 +89,7 @@ input.error {
     -webkit-appearance: none;
     appearance: none;
     width: 90%;
-    height: 30px;
+    height: 20px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
@@ -163,7 +162,7 @@ button {
 
 #draw {
     position: relative; 
-    top: 0px;
+    top: -30px;
     text-align: left;
     /* color: #dcbb13; */
 }
@@ -197,7 +196,7 @@ button {
 #harmonographSmall {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -800px;
+    top: -820px;
     left: 750px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
