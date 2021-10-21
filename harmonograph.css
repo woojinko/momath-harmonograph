@@ -2,12 +2,12 @@
     --b-color: #000000;
     --current-pen-color: #37FF00; 
 
-
-    /* --pen-color-3: #37FF00;
-    --pen-color-4: #37FF00;
-    --pen-color-5: #37FF00; */
-
-
+    --pen-red: rgb(255, 0, 0);
+    --pen-orange: rgb(255, 100, 0);
+    --pen-yellow: rgb(255, 255, 0);
+    --pen-green: rgb(100, 255, 0);
+    --pen-blue: rgb(0, 255, 255);;
+    --pen-purple: rgb(150, 0, 255);
 }
 
 body {
@@ -19,10 +19,10 @@ body {
 
 main {
     position: relative; 
-    top: -10px;
+    top: 0px;
     text-align: center; 
     color: #daab1c;
-    width: 1380px; 
+    width: 2560px; 
     margin: auto;
 }
 
@@ -122,20 +122,24 @@ input.error {
 
 button {
     width: 8em; 
-    /* height: 1.5em; */
     text-align: center; 
     background: #95530c; 
     color: #f8f8cb; 
     border-color: #f8f8cb; 
-    /* background: #950c69; 
-    color: #e6cbf8; 
-    border-color: #dcbcf2;  */
     border-width: 1px;
     font-size: 24px;
 }
 
 #saveButton, #submitButton{
     width: 5em;
+}
+
+
+#rainbowButton {
+    width: 2em;
+    height: 2em;
+    background: black; 
+    border-width: -1px;
 }
 
 #resetParamButton {
@@ -185,24 +189,23 @@ button {
 #topview {
     /* background-color: #721e1e; */
     position: absolute;
-    left: 260px;
-    top: 500px;
+    left: 230px;
+    top: 570px;
     width: 220px;
     height: 200px;
 }
 
 #save {
     position: absolute;
-    top: 650px;
+    top: 700px;
     /* color: #338539; */
     /* right: 0px; */
 }
 
-
 #harmonograph {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -500px;
+    top: -550px;
     left: 500px;
     border: 1px solid #919191;
     /* stroke: var(--pen-color-3); */
@@ -222,4 +225,10 @@ button {
     width: 150%;
     top: 150px;
     left: -40px;
+}
+
+img.rainbowarc {
+    position: absolute;
+    left: 150px;
+    background: transparent;
 }
