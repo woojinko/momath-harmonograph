@@ -44,6 +44,19 @@ function init() {
 	}
 }
 
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
+var userKey = makeid(10);
+
 // helper function to initialize harmonograph
 function harmonInit() {
 	harmonograph = document.getElementById('harmonograph');
@@ -325,8 +338,34 @@ function savePng() {
 	save(harmonograph);
 }
 
+function upload(formData)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'uploads/upload.php', true);
+	var status = document.querySelector('#status');
+    xhr.onload = function(e) { 
+		status.textContent = "Your harmonograph has been submitted!"
+		status.scrollIntoView();
+	};
+
+    // Listen to the upload progress.
+    var progressBar = document.querySelector('progress');
+    xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable)
+        {
+          console.log((e.loaded / e.total) * 100);
+        }
+    };
+    xhr.send(formData);
+
+}
+
 function submitPng() {
-	save(harmonograph);
+	harmonograph.toBlob(function (blob) {
+		var formData = new FormData();
+		formData.append('fileToUpload',blob,userKey + '.png');
+		upload(formData);
+	}, 'image/png');
 }
 
 
