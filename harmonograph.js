@@ -1,4 +1,4 @@
-var s = 1;
+var s = .5;
 var x = 0.0, y = 0.0;
 var t = 0.0;
 var dt = 0.0005;
@@ -67,7 +67,10 @@ function harmonInit() {
 	hg.setTransform(hScale, 0, 0, -1 * hScale, hX, hY);
 
 	// erase existing pixels in drawing area by setting them to transparent black
+	hg.strokeStyle = "#000000FF";
+
 	hg.clearRect(-1 * hX, -1 * hY, 880, 880);
+	hg.fillRect(-1 * hX, -1 * hY, 880, 880);
 
 	hg.rotate(hRotation);
 
