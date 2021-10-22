@@ -364,7 +364,7 @@ function upload(formData)
 	var btn = document.getElementById('submitButton');
 	btn.disabled = true;
     xhr.onload = function(e) { 
-		status.textContent = "Your harmonograph has been submitted!"
+		status.textContent = "Your harmonograph drawing has been submitted!"
 		status.scrollIntoView();
 		setTimeout(function(){fade(status);btn.disabled=false;},10000);
 	};
