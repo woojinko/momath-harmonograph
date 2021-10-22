@@ -341,14 +341,32 @@ function savePng() {
 	save(harmonograph);
 }
 
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.075){
+            clearInterval(timer);
+            element.textContent = '';
+			element.style.opacity = 1;
+			return
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.075;
+    }, 50);
+}
+
 function upload(formData)
 {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'uploads/upload.php', true);
 	var status = document.querySelector('#status');
+	var btn = document.getElementById('submitButton');
+	btn.disabled = true;
     xhr.onload = function(e) { 
 		status.textContent = "Your harmonograph has been submitted!"
 		status.scrollIntoView();
+		setTimeout(function(){fade(status);btn.disabled=false;},10000);
 	};
 
     // Listen to the upload progress.

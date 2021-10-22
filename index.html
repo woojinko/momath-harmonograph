@@ -33,15 +33,17 @@
 	<img src="momath_images/MoMathHarmonographLogo.png" alt="MoMath Harmonograph Logo" width="1380" height="100">
 	<main>
 		<div id="colors">
-			<h2> Select color</h2>
-			<p style="font-size:.8em;margin-top:-15px; margin-bottom:20px;"><i>Choose Pen color, OR Rainbow mode to see your pen color change slowly over time</i></p>
+			<h2>Step 1: Select color</h2>
 			<form>
 				<table id="input" class="input">
 					<tr>
-						<td class="label">Pen color:</td>
+						<td>Pen color:</td>
 						<td><em>c</em> =</td>
 						<td><input type='color' id="c2" value=#ffffff oninput="inputChange()" onchange="inputChange()" />
 						</td>
+					</tr>
+					<tr>
+						<td>OR</td>
 					</tr>
 					<tr>
 						<td class="label">Rainbow mode: </td>
@@ -53,6 +55,7 @@
 						</td>
 					</tr>
 				</table>
+				<p style="font-size:.8em;margin-top:0px; margin-bottom:20px;"><i>Use Rainbow mode to see your pen color change slowly over time</i></p>
 			</form>
 		</div>
 
@@ -116,7 +119,7 @@
 		</div>
 
 		<div id="parameters">
-			<h2> Set parameters</h2>
+			<h2>Step 2: Set parameters</h2>
 			<form id="paramForm">
 				<table>
 					<tr class="head">
@@ -245,7 +248,7 @@
 		</div>
 
 		<div id="draw">
-			<h2> Draw </h1>
+			<h2>Step 3: Draw </h1>
 				<div id="buttons">
 					<button id="startButton" onclick="startStop();">Start</button> <br>
 					<button id="clearButton" onclick="init();"> Clear drawing </button> <br>
@@ -255,7 +258,7 @@
 		</div>
 
 		<div id="save">
-			<h2> Save </h1>
+			<h2>Step 4: Save or Submit</h1>
 				<table class="input">
 					<tr>
 						<td colspan="2">
