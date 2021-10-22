@@ -320,9 +320,6 @@ function read(id) {
 
 function updateColor() {
 	updateElementColor('c2', '#harmonographSmall', '--current-pen-color');
-	if (rainbowMode) {
-		rainbowToggle();
-	}
 }
 
 function updateElementColor(inputID, element, property) {
@@ -330,6 +327,9 @@ function updateElementColor(inputID, element, property) {
 	// console.log(elemInput);
 
 	elemInput.addEventListener('change', function () {
+		if (rainbowMode) {
+			rainbowToggle();
+		}
 		var elemColor = elemInput.value;
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
