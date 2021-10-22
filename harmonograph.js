@@ -64,7 +64,7 @@ function harmonInit() {
 	penColor = style.getPropertyValue("--current-pen-color");
 	// console.log(penColor);
 	hg.strokeStyle = penColor;
-	hg.lineWidth = 0.5;
+	hg.lineWidth = 1.5;
 	hg.globalAlpha = 0.75;
 }
 
