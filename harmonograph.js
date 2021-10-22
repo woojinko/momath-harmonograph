@@ -407,7 +407,9 @@ function rainbowToggle(){
 }
 
 function resetParams() {
-	document.getElementById("resetParam").reset();
+	document.getElementById("paramForm").reset();
+	init();
+	inputChange();
 }
 
 

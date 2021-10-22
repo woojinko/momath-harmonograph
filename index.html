@@ -34,6 +34,7 @@
 	<main>
 		<div id="colors">
 			<h2> Select color</h2>
+			<p style="font-size:.8em;margin-top:-15px; margin-bottom:20px;"><i>Choose Pen color, OR Rainbow mode to see your pen color change slowly over time</i></p>
 			<form>
 				<table id="input" class="input">
 					<tr>
@@ -239,7 +240,7 @@
 						<td>&nbsp;Hz&nbsp;</td>
 					</tr>
 				</table>
-				<button id="resetParamButton" onclick="resetParams(), inputChange()"> Reset parameters</input>
+				<button id="resetParamButton" onclick="event.preventDefault(); resetParams();"> Reset parameters</input>
 			</form>
 		</div>
 
