@@ -1,6 +1,6 @@
 :root {
     --b-color: #000000;
-    --current-pen-color: #37FF00; 
+    --current-pen-color: #ffffff; 
 
     --pen-red: rgb(255, 0, 0);
     --pen-orange: rgb(255, 100, 0);
@@ -22,7 +22,7 @@ main {
     top: 0px;
     text-align: center; 
     color: #daab1c;
-    width: 2560px; 
+    width: 1280px; 
     margin: auto;
 }
 
@@ -146,12 +146,6 @@ button {
     position: absolute;
     /* bottom: -10px; */
     width: 10em;
-    text-align: center; 
-    background: #95530c; 
-    color: #f8f8cb; 
-    border-color: #f8f8cb; 
-    border-width: 1px;
-    font-size: 24px;
 }
 
 #colors {
@@ -193,6 +187,7 @@ button {
     top: 570px;
     width: 220px;
     height: 200px;
+    display:none;
 }
 
 #save {

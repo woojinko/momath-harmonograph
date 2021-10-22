@@ -1,5 +1,5 @@
 <?php
-$target_dir = "/var/www/momath-harmonograph/uploads/";
+$target_dir = "/var/www/momath-harmonograph/gala/uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));

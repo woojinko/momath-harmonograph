@@ -27,8 +27,6 @@
 	<link rel="stylesheet" type="text/css" href="harmonograph.css" />
 	<script type="text/javascript" src="harmonograph.js"></script>
 	<script type="text/javascript" src="FileSaver.js"></script>
-	<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs"
-		data-app-key="YOUR_APP_KEY"></script>
 </head>
 
 <body onload="init()">
@@ -41,14 +39,16 @@
 					<tr>
 						<td class="label">Pen color:</td>
 						<td><em>c</em> =</td>
-						<td><input type='color' id="c2" value=#37FF00 onchange="inputChange()" />
+						<td><input type='color' id="c2" value=#ffffff onchange="inputChange()" />
 						</td>
 					</tr>
 					<tr>
 						<td class="label">Rainbow mode: </td>
 						<td><em>r</em> =</td>
-						<td> 
-							<button id="rainbowButton" onclick="event.preventDefault(); rainbowToggle()"> <img id="rainbow" src="momath_images/rainbow-arc.png" alt="rainbow" width="40px" height="40px"> </button>
+						<td>
+							<button id="rainbowButton" onclick="event.preventDefault(); rainbowToggle()"> <img
+									id="rainbow" src="momath_images/rainbow-arc.png" alt="rainbow" width="40px"
+									height="40px"> </button>
 						</td>
 					</tr>
 				</table>
@@ -127,18 +127,18 @@
 					<tr>
 						<td class="label">&nbsp;Amplitude x</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider"
-								id="A1x">
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+								class="slider" id="A1x">
 							<span id="A1xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider"
-								id="A2x">
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+								class="slider" id="A2x">
 							<span id="A2xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider"
-								id="A3x">
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+								class="slider" id="A3x">
 							<span id="A3xval"></span>
 						</td>
 						<td>&nbsp;px</td>
@@ -146,17 +146,17 @@
 					<tr>
 						<td class="label">Amplitude y</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider"
-								id="A1y">
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+								class="slider" id="A1y">
 							<span id="A1yval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()" class="slider"
-								id="A2y">
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+								class="slider" id="A2y">
 							<span id="A2yval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="-120" max="-80" value="-100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
 								class="slider" id="A3y">
 							<span id="A3yval"></span>
 						</td>
@@ -170,7 +170,7 @@
 							<span id="p1xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="90" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider"
 								id="p2x">
 							<span id="p2xval"></span>
 						</td>
@@ -203,13 +203,13 @@
 					<tr>
 						<td class="label">Damping</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="180" onchange="inputChange()" class="slider"
-								id="td1">
+							<input type="range" min="0" max="180" value="180" onchange="inputChange()"
+								class="slider" id="td1">
 							<span id="td1val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="180" onchange="inputChange()" class="slider"
-								id="td2">
+							<input type="range" min="0" max="180" value="180" onchange="inputChange()"
+								class="slider" id="td2">
 							<span id="td2val"></span>
 						</td>
 						<td class="slidecontainer">
@@ -232,29 +232,26 @@
 							<span id="f2val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0.00" max="2.00" value="1.00" step="0.05" onchange="inputChange()"
-								class="slider" id="f3">
+							<input type="range" min="0.00" max="2.00" value="1.00" step="0.05"
+								onchange="inputChange()" class="slider" id="f3">
 							<span id="f3val"></span>
 						</td>
 						<td>&nbsp;Hz&nbsp;</td>
 					</tr>
 				</table>
 				<button id="resetParamButton" onclick="resetParams(), inputChange()"> Reset parameters</input>
-
 			</form>
 		</div>
 
 		<div id="draw">
 			<h2> Draw </h1>
 				<div id="buttons">
-					<button id="startButton" onclick="startStop();">Stop</button> <br>
-					<button onclick="init();"> Clear drawing </button> <br>
-					<button onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>
+					<button id="startButton" onclick="startStop();">Start</button> <br>
+					<button id="clearButton" onclick="init();"> Clear drawing </button> <br>
+					<button id="speedButton" onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>
 				</div>
 				<canvas id="harmonograph" width="880" height="880"> </canvas>
 		</div>
-		<br>
-		<br>
 
 		<div id="save">
 			<h2> Save </h1>

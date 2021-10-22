@@ -15,10 +15,9 @@ var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
 var harmonograph, hg, modelDiagram, md;
 var style, penColor;
 var defaultColor = "#000000";
-var intId = window.setInterval(step, 1000 * dt);;
+var intId;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
-
 
 var hScale = 1.4, hX = 500, hY = 500, hRotation = 0;
 // var hRotation = 0.7854;
@@ -27,14 +26,22 @@ var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 var rainbowMode = false;
 
 
+
 // initialize webpage
 function init() {
 	harmonInit();
 	// diagramInit();
 	// pendInit();
+
 	t = 0.0; ns = setns;
 	inputChange();
 	swing();
+	var stab = document.getElementById('startButton');
+	if (intId != null) {
+		stab.innerHTML = 'Start';
+		window.clearInterval(intId);
+		intId = null;
+	}
 }
 
 // helper function to initialize harmonograph
@@ -281,12 +288,7 @@ function read(id) {
 }
 
 function updateColor() {
-	// updateElementColor('c1', 'body', '--b-color');
 	updateElementColor('c2', '#harmonograph', '--current-pen-color');
-	// updateElementColor('c3', '#harmonograph', '--pen-color-3');
-	// updateElementColor('c4', '#harmonograph', '--pen-color-4');
-	// updateElementColor('c5', '#harmonograph', '--pen-color-5');
-
 }
 
 function updateElementColor(inputID, element, property) {
@@ -294,11 +296,13 @@ function updateElementColor(inputID, element, property) {
 	// console.log(elemInput);
 
 	elemInput.addEventListener('change', function () {
+		if (rainbowMode) {
+			rainbowToggle();
+		}
 		var elemColor = elemInput.value;
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
 	})
-
 	// elemInput.addEventListener('focus', function () {
 	// 	setTimeout(()=> {
 	// 		var elemColor = elemInput.value;
@@ -350,10 +354,6 @@ function save(hCanvas) {
 	}, 'image/png');
 }
 
-function resetParams() {
-	document.getElementById("resetParam").reset();
-}
-
 function rainbowToggle(){
 	rainbowMode = !rainbowMode;
 	console.log(rainbowMode);
@@ -363,6 +363,11 @@ function rainbowToggle(){
 		document.getElementById("rainbowButton").style.background = "rgb(0, 0, 0)";
 	}
 }
+
+function resetParams() {
+	document.getElementById("resetParam").reset();
+}
+
 
 // function PendulumSim(length_m, gravity_mps2, initialAngle_rad, timestep_ms, callback) {
 // 	var velocity = 0;
