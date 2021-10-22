@@ -1,0 +1,234 @@
+:root {
+    --b-color: #000000;
+    --current-pen-color: #37FF00; 
+
+    --pen-red: rgb(255, 0, 0);
+    --pen-orange: rgb(255, 100, 0);
+    --pen-yellow: rgb(255, 255, 0);
+    --pen-green: rgb(100, 255, 0);
+    --pen-blue: rgb(0, 255, 255);;
+    --pen-purple: rgb(150, 0, 255);
+}
+
+body {
+    background-color: var(--b-color); 
+    font-size: 100%;
+    text-align: center; 
+    font-family: Helvetica, 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+main {
+    position: relative; 
+    top: 0px;
+    text-align: center; 
+    color: #daab1c;
+    width: 2560px; 
+    margin: auto;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+}
+
+h2 {
+    position: relative;
+    top: 10px;
+    font-size: 2.2em;
+    font-style: italic;
+    text-align: left;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+table {
+    position: relative;
+    top: -10px;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    /* background-color: rgba(132, 96, 7, 0.6); */
+}
+
+tr {
+    padding-bottom: 2em;
+}
+
+tr.head {
+    text-align: center; 
+}
+
+
+td.label {
+    text-align: right; 
+    padding-right: 1em;
+}
+
+td.slidecontainer {
+   text-align: center;
+   width: 100px;
+}
+
+
+input {
+    text-align: center; 
+    background: none; 
+    color:#a91535; 
+    border: 1px solid #919191;
+}
+
+input.error {
+    background-color: #fb1905;
+}
+
+.checkbox {
+    position: relative;
+    top: 100px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: 15px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #a91535;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #a91535;
+    cursor: pointer;
+}
+
+button {
+    width: 8em; 
+    text-align: center; 
+    background: #95530c; 
+    color: #f8f8cb; 
+    border-color: #f8f8cb; 
+    border-width: 1px;
+    font-size: 24px;
+}
+
+#saveButton, #submitButton{
+    width: 5em;
+}
+
+
+#rainbowButton {
+    width: 2em;
+    height: 2em;
+    background: black; 
+    border-width: -1px;
+}
+
+#resetParamButton {
+    position: absolute;
+    /* bottom: -10px; */
+    width: 10em;
+    text-align: center; 
+    background: #95530c; 
+    color: #f8f8cb; 
+    border-color: #f8f8cb; 
+    border-width: 1px;
+    font-size: 24px;
+}
+
+#colors {
+    position: relative; 
+    left: 0px;
+    top: -10px;
+    width: 380px; 
+    text-align: left;
+    /* color: #a91535; */
+}
+
+#parameters {
+    position: relative; 
+    left: 0px; 
+    top: -30px;
+    width: 480px; 
+    text-align: left;
+    /* color: #1964c1 */
+}
+
+#draw {
+    position: relative; 
+    top: 0px;
+    text-align: left;
+    /* color: #dcbb13; */
+}
+
+#buttons {
+    position: relative; 
+    width: 480px; 
+    top: -10px;
+    font-size: 24px;
+}
+
+#topview {
+    /* background-color: #721e1e; */
+    position: absolute;
+    left: 230px;
+    top: 570px;
+    width: 220px;
+    height: 200px;
+}
+
+#save {
+    position: absolute;
+    top: 700px;
+    /* color: #338539; */
+    /* right: 0px; */
+}
+
+#harmonograph {
+    /* background-color: #721e1e; */
+    position: absolute; 
+    top: -550px; 
+    left: 500px;
+    border: 1px solid #919191;
+    /* stroke: var(--pen-color-3); */
+    stroke: var(--current-pen-color);
+}
+
+#pendCanvas {
+    position: absolute; 
+    height: 250%;
+    top: -250px;
+    left: -150px;
+    /* background-color: blue; */
+}
+
+#modelDiagram {
+    position: absolute; 
+    width: 150%;
+    top: 150px;
+    left: -40px;
+}
+
+img.rainbowarc {
+    position: absolute;
+    left: 150px;
+    background: transparent;
+}
