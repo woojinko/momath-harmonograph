@@ -12,27 +12,27 @@ var A3x, p3x, A3y, p3y, f3, td3;
 
 var Cx, Cy, Dx, Dy, Px, Py, Ex, Ey;
 
-var harmonograph, hg, modelDiagram, md;
+var harmonographSmall, hgSmall, modelDiagram, md;
+var harmonographBig, hgBig;
 var style, penColor;
 var defaultColor = "#000000";
 var intId;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
-var hScale = 1.4, hX = 500, hY = 500, hRotation = 0;
+var hSmallScale = 1.4, hSmallX = 430, hSmallY = 490, hRotation = 0;
+var hBigScale = 2.3, hBigX = 620, hBigY = 650;
 // var hRotation = 0.7854;
 var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 
 var rainbowMode = false;
 
-
-
 // initialize webpage
 function init() {
-	harmonInit();
+	harmonSmallInit();
+	harmonBigInit();
 	// diagramInit();
 	// pendInit();
-
 	t = 0.0; ns = setns;
 	inputChange();
 	swing();
@@ -45,27 +45,50 @@ function init() {
 }
 
 // helper function to initialize harmonograph
-function harmonInit() {
-	harmonograph = document.getElementById('harmonograph');
+function harmonSmallInit() {
+	harmonographSmall = document.getElementById('harmonographSmall');
 	// get 2D drawing context on the canvas
-	hg = harmonograph.getContext('2d');
+	hgSmall = harmonographSmall.getContext('2d');
 
 	// set transformations
-	hg.setTransform(hScale, 0, 0, -1 * hScale, hX, hY);
+	hgSmall.setTransform(hSmallScale, 0, 0, -1 * hSmallScale, hSmallX, hSmallY);
 
 	// erase existing pixels in drawing area by setting them to transparent black
-	hg.clearRect(-1 * hX, -1 * hY, 880, 880);
+	hgSmall.clearRect(-1 * hSmallX, -1 * hSmallY, 880, 880);
 
-	hg.rotate(hRotation);
+	hgSmall.rotate(hRotation);
 
 	// set up aesthetics
-	style = getComputedStyle(harmonograph);
+	style = getComputedStyle(harmonographSmall);
 	// penColor = style.getPropertyValue("--pen-color-3");
 	penColor = style.getPropertyValue("--current-pen-color");
 	// console.log(penColor);
-	hg.strokeStyle = penColor;
-	hg.lineWidth = 0.5;
-	hg.globalAlpha = 0.75;
+	hgSmall.strokeStyle = penColor;
+	hgSmall.lineWidth = 1;
+	hgSmall.globalAlpha = 0.75;
+}
+
+function harmonBigInit() {
+	harmonographBig = document.getElementById('harmonographBig');
+	// get 2D drawing context on the canvas
+	hgBig = harmonographBig.getContext('2d');
+
+	// set transformations
+	hgBig.setTransform(hBigScale, 0, 0, -1 * hBigScale, hBigX, hBigY);
+
+	// erase existing pixels in drawing area by setting them to transparent black
+	hgBig.clearRect(-1 * hBigX, -1 * hBigY, 1180, 1180);
+
+	hgBig.rotate(hRotation);
+
+	// set up aesthetics
+	style = getComputedStyle(harmonographBig);
+	// penColor = style.getPropertyValue("--pen-color-3");
+	penColor = style.getPropertyValue("--current-pen-color");
+	// console.log(penColor);
+	hgBig.strokeStyle = penColor;
+	hgBig.lineWidth = 0.5;
+	hgBig.globalAlpha = 0.75;
 }
 
 // function pendInit() {
@@ -179,13 +202,16 @@ function swing() {
 }
 
 function step() {
-	if (hg != null) {
-		hg.beginPath();
-		hg.moveTo(x, y);
+	if (hgSmall != null && hgBig != null) {
+		hgSmall.beginPath();
+		hgSmall.moveTo(x, y);
+
+		hgBig.beginPath();
+		hgBig.moveTo(x, y);
 		for (var i = 0; i < s; ++i) {
 			t += dt;
 			swing();
-			style = getComputedStyle(harmonograph);
+			style = getComputedStyle(harmonographSmall);
 			if (rainbowMode) {
 				var rem = t * 0.1 % 6;
 				if (rem < 1) {
@@ -204,10 +230,13 @@ function step() {
 			} else {
 				penColor = style.getPropertyValue("--current-pen-color");
 			}
-			hg.strokeStyle = penColor;
-			hg.lineTo(x, y);
+			hgSmall.strokeStyle = penColor;
+			hgSmall.lineTo(x, y);
+			hgBig.strokeStyle = penColor;
+			hgBig.lineTo(x, y);
 		}
-		hg.stroke();
+		hgSmall.stroke();
+		hgBig.stroke();
 
 		// sc.clearRect(-680, -680, 1600, 1600);
 		// sc.strokeStyle = "#f59e8e";
@@ -288,7 +317,7 @@ function read(id) {
 }
 
 function updateColor() {
-	updateElementColor('c2', '#harmonograph', '--current-pen-color');
+	updateElementColor('c2', '#harmonographSmall', '--current-pen-color');
 }
 
 function updateElementColor(inputID, element, property) {
@@ -303,16 +332,6 @@ function updateElementColor(inputID, element, property) {
 		var elemName = document.querySelector(element);
 		elemName.style.setProperty(property, elemColor);
 	})
-	// elemInput.addEventListener('focus', function () {
-	// 	setTimeout(()=> {
-	// 		var elemColor = elemInput.value;
-	// 		var elemName = document.querySelector(element);
-	// 		elemInput.setAttribute('type', 'text');
-	// 		elemInput.setAttribute('type', 'color');
-	// 		elemName.style.setProperty(property, elemColor);
-	// 		console.log(elemColor);
-	// 	}, 3000);
-	// });
 }
 
 function savePng() {
@@ -322,11 +341,11 @@ function savePng() {
 	// var renderer = new CanvasRenderer(png, false);
 	// renderer.draw(xs, ys);
 	// renderer.save();
-	save(harmonograph);
+	save(harmonographSmall);
 }
 
 function submitPng() {
-	save(harmonograph);
+	save(harmonographSmall);
 }
 
 
@@ -344,7 +363,7 @@ function saveSvg() {
 	var renderer = new SvgRenderer(svg, !bezier, bezier, read('bezier-step'));
 	renderer.draw(xs, ys);
 	renderer.save();
-	// save(harmonograph);
+	// save(harmonographSmall);
 }
 */
 
@@ -367,6 +386,7 @@ function rainbowToggle(){
 function resetParams() {
 	document.getElementById("resetParam").reset();
 }
+
 
 
 // function PendulumSim(length_m, gravity_mps2, initialAngle_rad, timestep_ms, callback) {

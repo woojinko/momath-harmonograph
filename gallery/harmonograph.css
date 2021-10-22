@@ -19,10 +19,9 @@ body {
 
 main {
     position: relative; 
-    top: 0px;
+    top: 120px;
     text-align: center; 
     color: #daab1c;
-    width: 1280px; 
     margin: auto;
 }
 
@@ -34,7 +33,7 @@ h1 {
 h2 {
     position: relative;
     top: 10px;
-    font-size: 2.2em;
+    font-size: 3em;
     font-style: italic;
     text-align: left;
 }
@@ -59,6 +58,9 @@ tr.head {
     text-align: center; 
 }
 
+td {
+    font-size: 1.5em;
+}
 
 td.label {
     text-align: right; 
@@ -67,11 +69,11 @@ td.label {
 
 td.slidecontainer {
    text-align: center;
-   width: 100px;
+   width: 150px;
 }
 
-
 input {
+    width: 5em;
     text-align: center; 
     background: none; 
     color:#a91535; 
@@ -82,23 +84,17 @@ input.error {
     background-color: #fb1905;
 }
 
-.checkbox {
-    position: relative;
-    top: 100px;
-}
-
 .slider {
     -webkit-appearance: none;
     appearance: none;
     width: 90%;
-    height: 15px;
+    height: 20px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
-  
 
 .slider:hover {
     opacity: 1;
@@ -107,15 +103,15 @@ input.error {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #a91535;
     cursor: pointer;
 }
   
 .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #a91535;
     cursor: pointer;
 }
@@ -127,13 +123,12 @@ button {
     color: #f8f8cb; 
     border-color: #f8f8cb; 
     border-width: 1px;
-    font-size: 24px;
+    font-size: 32px;
 }
 
 #saveButton, #submitButton{
-    width: 5em;
+    width: 4em;
 }
-
 
 #rainbowButton {
     width: 2em;
@@ -143,16 +138,14 @@ button {
 }
 
 #resetParamButton {
-    position: absolute;
-    /* bottom: -10px; */
     width: 10em;
 }
 
 #colors {
     position: relative; 
     left: 0px;
-    top: -10px;
-    width: 380px; 
+    top: -40px;
+    width: 880px; 
     text-align: left;
     /* color: #a91535; */
 }
@@ -160,15 +153,15 @@ button {
 #parameters {
     position: relative; 
     left: 0px; 
-    top: -30px;
-    width: 480px; 
+    top: -80px;
+    width: 880px; 
     text-align: left;
     /* color: #1964c1 */
 }
 
 #draw {
     position: relative; 
-    top: 0px;
+    top: -100px;
     text-align: left;
     /* color: #dcbb13; */
 }
@@ -183,26 +176,38 @@ button {
 #topview {
     /* background-color: #721e1e; */
     position: absolute;
-    left: 230px;
-    top: 570px;
+    left: 260px;
+    top: 500px;
     width: 220px;
     height: 200px;
-    display:none;
+    display: none;
 }
 
 #save {
     position: absolute;
-    top: 700px;
+    top: 650px;
+    display:  none;
     /* color: #338539; */
     /* right: 0px; */
 }
 
-#harmonograph {
+
+#harmonographSmall {
     /* background-color: #721e1e; */
     position: absolute; 
-    top: -550px; 
-    left: 500px;
+    top: -700px;
+    left: 750px;
     border: 1px solid #919191;
+    /* stroke: var(--pen-color-3); */
+    stroke: var(--current-pen-color);
+}
+
+#harmonographBig {
+    position: absolute; 
+    top: -930px;
+    /* right: 300px; */
+    left: 2200px;
+    border: 0px solid #919191;
     /* stroke: var(--pen-color-3); */
     stroke: var(--current-pen-color);
 }
@@ -220,6 +225,21 @@ button {
     width: 150%;
     top: 150px;
     left: -40px;
+}
+#largeScreen {
+    position: absolute;
+    right: 100px;
+    top: -600px;
+}
+img.logo1 {
+    position: absolute;
+    left: 300px;
+}
+
+img.logo2 {
+    position: absolute;
+    left: 1350px;
+    display: none;
 }
 
 img.rainbowarc {
