@@ -1,0 +1,7 @@
+/uploads/*
+!/uploads/*.php
+/gala/uploads/*
+!/gala/*.php
+
+/gallery/uploads/*
+!/gallery/*.php
