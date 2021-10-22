@@ -39,7 +39,7 @@
 					<tr>
 						<td class="label">Pen color:</td>
 						<td><em>c</em> =</td>
-						<td><input type='color' id="c2" value=#ffffff onchange="inputChange()" />
+						<td><input type='color' id="c2" value=#ffffff oninput="inputChange()" onchange="inputChange()" />
 						</td>
 					</tr>
 					<tr>
@@ -127,17 +127,17 @@
 					<tr>
 						<td class="label">&nbsp;Amplitude x</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A1x">
 							<span id="A1xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A2x">
 							<span id="A2xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A3x">
 							<span id="A3xval"></span>
 						</td>
@@ -146,17 +146,17 @@
 					<tr>
 						<td class="label">Amplitude y</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A1y">
 							<span id="A1yval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A2y">
 							<span id="A2yval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" onchange="inputChange()"
+							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A3y">
 							<span id="A3yval"></span>
 						</td>
@@ -165,17 +165,17 @@
 					<tr>
 						<td class="label">Phase x</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p1x">
 							<span id="p1xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p2x">
 							<span id="p2xval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p3x">
 							<span id="p3xval"></span>
 						</td>
@@ -184,17 +184,17 @@
 					<tr>
 						<td class="label">Phase y</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="90" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="90" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p1y">
 							<span id="p1yval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p2y">
 							<span id="p2yval"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p3y">
 							<span id="p3yval"></span>
 						</td>
@@ -203,17 +203,17 @@
 					<tr>
 						<td class="label">Damping</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="180" onchange="inputChange()"
+							<input type="range" min="0" max="180" value="180" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="td1">
 							<span id="td1val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="180" onchange="inputChange()"
+							<input type="range" min="0" max="180" value="180" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="td2">
 							<span id="td2val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="80" onchange="inputChange()" class="slider"
+							<input type="range" min="0" max="180" value="80" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="td3">
 							<span id="td3val"></span>
 						</td>
@@ -222,18 +222,18 @@
 					<tr>
 						<td class="label">Frequency</td>
 						<td class="slidecontainer">
-							<input type="range" min="0.0" max="2.0" value="1.0" step="0.05" onchange="inputChange()"
+							<input type="range" min="0.0" max="2.0" value="1.0" step="0.05" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="f1">
 							<span id="f1val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0.0" max="2.0" value="1.6" step="0.05" onchange="inputChange()"
+							<input type="range" min="0.0" max="2.0" value="1.6" step="0.05" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="f2">
 							<span id="f2val"></span>
 						</td>
 						<td class="slidecontainer">
 							<input type="range" min="0.00" max="2.00" value="1.00" step="0.05"
-								onchange="inputChange()" class="slider" id="f3">
+								oninput="inputChange()" onchange="inputChange()" class="slider" id="f3">
 							<span id="f3val"></span>
 						</td>
 						<td>&nbsp;Hz&nbsp;</td>
