@@ -19,12 +19,12 @@ var intId;
 var ns, setns = 100000;
 var vis1 = true, vis2 = true;
 
-var hScale = 1.4, hX = 500, hY = 500, hRotation = 0;
+var hScale = 1.6, hX = 880/2, hY = 880/2, hRotation = 0;
 // var hRotation = 0.7854;
 var dScale = 0.25, dX = 110, dY = 180, dRotation = hRotation;
 
 var rainbowMode = false;
-
+var remOffset = 0;
 
 
 // initialize webpage
@@ -55,8 +55,6 @@ function makeid(length) {
    return result;
 }
 
-var userKey = makeid(10);
-
 // helper function to initialize harmonograph
 function harmonInit() {
 	harmonograph = document.getElementById('harmonograph');
@@ -74,13 +72,19 @@ function harmonInit() {
 
 	hg.rotate(hRotation);
 
+	// give a new key
+	userKey = makeid(10);
+
 	// set up aesthetics
+	if (rainbowMode) {
+		remOffset = Math.random();
+	}
 	style = getComputedStyle(harmonograph);
 	// penColor = style.getPropertyValue("--pen-color-3");
 	penColor = style.getPropertyValue("--current-pen-color");
 	// console.log(penColor);
 	hg.strokeStyle = penColor;
-	hg.lineWidth = 1.5;
+	hg.lineWidth = 1;
 	hg.globalAlpha = 0.75;
 }
 
@@ -194,6 +198,31 @@ function swing() {
 	Ex = x3; Ey = y3;
 }
 
+function HuetoRGB(h) {
+    var r, g, b, i, f, p, q, t;
+	var s = 1
+	var v = 1
+
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = 0;
+    q = 1 * (1 - f);
+    t = f
+    switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+    return {
+        r: Math.round(r * 255),
+        g: Math.round(g * 255),
+        b: Math.round(b * 255)
+    };
+}
+
 function step() {
 	if (hg != null) {
 		hg.beginPath();
@@ -203,7 +232,12 @@ function step() {
 			swing();
 			style = getComputedStyle(harmonograph);
 			if (rainbowMode) {
-				var rem = t * 0.1 % 6;
+				var r = HuetoRGB((t*.0166666667+remOffset)%1);
+
+				penColor = "rgb(" + r.r + ", " + r.g + ", " + r.b + ")";
+				
+				/*
+				var rem = (t * 0.1 + remOffset) % 6;
 				if (rem < 1) {
 					penColor = "rgb(255, 0, 0)";
 				} else if (rem < 2) {
@@ -217,6 +251,8 @@ function step() {
 				} else {
 					penColor = "rgb(150, 0, 255)";
 				}
+				*/
+
 			} else {
 				penColor = style.getPropertyValue("--current-pen-color");
 			}
@@ -382,11 +418,19 @@ function upload(formData)
 }
 
 function submitPng() {
-	harmonograph.toBlob(function (blob) {
-		var formData = new FormData();
-		formData.append('fileToUpload',blob,userKey + '.png');
-		upload(formData);
-	}, 'image/png');
+	if(t > 1){
+		harmonograph.toBlob(function (blob) {
+			var formData = new FormData();
+			formData.append('fileToUpload',blob,userKey + '.png');
+			upload(formData);
+		}, 'image/png');
+	}else {
+		var status = document.querySelector('#status');
+		var btn = document.getElementById('submitButton');
+		status.textContent = "Please allow your harmonograph to run before submitting."
+		status.scrollIntoView();
+		setTimeout(function(){fade(status);btn.disabled=false;},10000);
+	}
 }
 
 
@@ -416,8 +460,8 @@ function save(hCanvas) {
 
 function rainbowToggle(){
 	rainbowMode = !rainbowMode;
-	console.log(rainbowMode);
 	if (rainbowMode) {
+		remOffset = Math.random();
 		document.getElementById("rainbowButton").style.background = "rgb(255,255,255)";
 	} else {
 		document.getElementById("rainbowButton").style.background = "rgb(0, 0, 0)";
