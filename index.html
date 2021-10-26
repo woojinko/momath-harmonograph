@@ -25,7 +25,7 @@
 		gtag('config', 'G-E23KN8G2WH');
 	</script>
 	<link rel="stylesheet" type="text/css" href="harmonograph.css" />
-	<script type="text/javascript" src="harmonograph.js"></script>
+	<script type="text/javascript" src="harmonographrot.js"></script>
 	<script type="text/javascript" src="FileSaver.js"></script>
 </head>
 
@@ -126,7 +126,6 @@
 						<td> </td>
 						<td>Pendulum A</td>
 						<td>Pendulum B</td>
-						<td>Pendulum C</td>
 					</tr>
 					<tr>
 						<td class="label">&nbsp;Amplitude x</td>
@@ -139,11 +138,6 @@
 							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="A2x">
 							<span id="A2xval"></span>
-						</td>
-						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
-								class="slider" id="A3x">
-							<span id="A3xval"></span>
 						</td>
 						<td>&nbsp;px</td>
 					</tr>
@@ -159,11 +153,6 @@
 								class="slider" id="A2y">
 							<span id="A2yval"></span>
 						</td>
-						<td class="slidecontainer">
-							<input type="range" min="80" max="120" value="100" oninput="inputChange()" onchange="inputChange()"
-								class="slider" id="A3y">
-							<span id="A3yval"></span>
-						</td>
 						<td>&nbsp;px</td>
 					</tr>
 					<tr>
@@ -177,11 +166,6 @@
 							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
 								id="p2x">
 							<span id="p2xval"></span>
-						</td>
-						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
-								id="p3x">
-							<span id="p3xval"></span>
 						</td>
 						<td>&nbsp;&deg;</td>
 					</tr>
@@ -197,29 +181,19 @@
 								id="p2y">
 							<span id="p2yval"></span>
 						</td>
-						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="0" oninput="inputChange()" onchange="inputChange()" class="slider"
-								id="p3y">
-							<span id="p3yval"></span>
-						</td>
 						<td>&nbsp;&deg;</td>
 					</tr>
 					<tr>
 						<td class="label">Damping</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="180" oninput="inputChange()" onchange="inputChange()"
+							<input type="range" min="0" max="180" value="30" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="td1">
 							<span id="td1val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="180" oninput="inputChange()" onchange="inputChange()"
+							<input type="range" min="0" max="180" value="15" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="td2">
 							<span id="td2val"></span>
-						</td>
-						<td class="slidecontainer">
-							<input type="range" min="0" max="180" value="80" oninput="inputChange()" onchange="inputChange()" class="slider"
-								id="td3">
-							<span id="td3val"></span>
 						</td>
 						<td>&nbsp;s</td>
 					</tr>
@@ -231,16 +205,23 @@
 							<span id="f1val"></span>
 						</td>
 						<td class="slidecontainer">
-							<input type="range" min="0.0" max="2.0" value="1.6" step="0.05" oninput="inputChange()" onchange="inputChange()"
+							<input type="range" min="0.0" max="2.0" value="0.8" step="0.05" oninput="inputChange()" onchange="inputChange()"
 								class="slider" id="f2">
 							<span id="f2val"></span>
 						</td>
-						<td class="slidecontainer">
-							<input type="range" min="0.00" max="2.00" value="1.00" step="0.05"
-								oninput="inputChange()" onchange="inputChange()" class="slider" id="f3">
-							<span id="f3val"></span>
-						</td>
 						<td>&nbsp;Hz&nbsp;</td>
+					</tr>
+					<tr class="head">
+						<td></td>
+						<td style="padding-top:12px;" >Extra</td>
+					</tr>
+					<tr>
+						<td class="label">Rotation</td>
+						<td class="slidecontainer">
+							<input type="range" min="0.0008" max="0.8" value="0.0008" step="0.2664" oninput="inputChange()" onchange="inputChange()"
+								class="slider" id="r1">
+							<span id="r1val"></span>
+						</td>
 					</tr>
 				</table>
 				<button id="resetParamButton" onclick="event.preventDefault(); resetParams();"> Reset parameters</input>
@@ -252,7 +233,7 @@
 				<div id="buttons">
 					<button id="startButton" onclick="startStop();">Start</button> <br>
 					<button id="clearButton" onclick="init();"> Clear drawing </button> <br>
-					<!--<button id="speedButton" onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>-->
+					<button id="speedButton" onclick="speed();">Speed</button><span id="spf">&nbsp; 1x</span>
 				</div>
 				<canvas id="harmonograph" width="880" height="880"> </canvas>
 		</div>
